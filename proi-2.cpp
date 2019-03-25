@@ -6,10 +6,13 @@
  */
 
 #include <iostream>
+#include "chess.h"
 
 using namespace std;
+using namespace Chess;
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    Board board(8, 8);
+
     return 0;
 }
