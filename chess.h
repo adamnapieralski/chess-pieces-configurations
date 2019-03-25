@@ -9,6 +9,7 @@
 #define CHESS_H
 
 #include <vector>
+#include <math.h>
 
 namespace Chess{
 
@@ -37,33 +38,39 @@ namespace Chess{
         std::vector<Position> captureSquares;
 
         Piece(Position posit, Board board1);
-        virtual void setCaptureSquares() = 0;
-        bool isCaptured(Position square);
+        // virtual void setCaptureSquares() = 0;
+        virtual bool isCaptured(Position square);
     };
 
     class Pawn: public Piece{
     public:
-        void setCaptureSquares() override;
+        bool isCaptured(Position square) override;
+        // void setCaptureSquares() override;
     };
 
     class Rook: public Piece{
-
+    public:
+        bool isCaptured(Position square) override;
     };
 
     class Bishop: public Piece{
-
+    public:
+        bool isCaptured(Position square) override;
     };
 
     class Knight: public Piece{
-
+    public:
+        bool isCaptured(Position square) override;
     };
 
     class Queen: public Piece{
-
+    public:
+        bool isCaptured(Position square) override;
     };
 
     class King: public Piece{
-
+    public:
+        bool isCaptured(Position square) override;
     };
 }
 
