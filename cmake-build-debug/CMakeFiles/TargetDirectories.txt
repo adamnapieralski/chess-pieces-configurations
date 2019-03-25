@@ -1,0 +1,3 @@
+/home/napiad/studia/eiti/proi/proi-project-2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/napiad/studia/eiti/proi/proi-project-2/cmake-build-debug/CMakeFiles/proi_project_2.dir
+/home/napiad/studia/eiti/proi/proi-project-2/cmake-build-debug/CMakeFiles/edit_cache.dir
