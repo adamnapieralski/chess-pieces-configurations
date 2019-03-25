@@ -123,32 +123,59 @@ proi_project_2/fast:
 	$(MAKE) -f CMakeFiles/proi_project_2.dir/build.make CMakeFiles/proi_project_2.dir/build
 .PHONY : proi_project_2/fast
 
-main.o: main.cpp.o
+chess.o: chess.cpp.o
 
-.PHONY : main.o
+.PHONY : chess.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) -f CMakeFiles/proi_project_2.dir/build.make CMakeFiles/proi_project_2.dir/main.cpp.o
-.PHONY : main.cpp.o
+chess.cpp.o:
+	$(MAKE) -f CMakeFiles/proi_project_2.dir/build.make CMakeFiles/proi_project_2.dir/chess.cpp.o
+.PHONY : chess.cpp.o
 
-main.i: main.cpp.i
+chess.i: chess.cpp.i
 
-.PHONY : main.i
+.PHONY : chess.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles/proi_project_2.dir/build.make CMakeFiles/proi_project_2.dir/main.cpp.i
-.PHONY : main.cpp.i
+chess.cpp.i:
+	$(MAKE) -f CMakeFiles/proi_project_2.dir/build.make CMakeFiles/proi_project_2.dir/chess.cpp.i
+.PHONY : chess.cpp.i
 
-main.s: main.cpp.s
+chess.s: chess.cpp.s
 
-.PHONY : main.s
+.PHONY : chess.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles/proi_project_2.dir/build.make CMakeFiles/proi_project_2.dir/main.cpp.s
-.PHONY : main.cpp.s
+chess.cpp.s:
+	$(MAKE) -f CMakeFiles/proi_project_2.dir/build.make CMakeFiles/proi_project_2.dir/chess.cpp.s
+.PHONY : chess.cpp.s
+
+proi-2.o: proi-2.cpp.o
+
+.PHONY : proi-2.o
+
+# target to build an object file
+proi-2.cpp.o:
+	$(MAKE) -f CMakeFiles/proi_project_2.dir/build.make CMakeFiles/proi_project_2.dir/proi-2.cpp.o
+.PHONY : proi-2.cpp.o
+
+proi-2.i: proi-2.cpp.i
+
+.PHONY : proi-2.i
+
+# target to preprocess a source file
+proi-2.cpp.i:
+	$(MAKE) -f CMakeFiles/proi_project_2.dir/build.make CMakeFiles/proi_project_2.dir/proi-2.cpp.i
+.PHONY : proi-2.cpp.i
+
+proi-2.s: proi-2.cpp.s
+
+.PHONY : proi-2.s
+
+# target to generate assembly for a file
+proi-2.cpp.s:
+	$(MAKE) -f CMakeFiles/proi_project_2.dir/build.make CMakeFiles/proi_project_2.dir/proi-2.cpp.s
+.PHONY : proi-2.cpp.s
 
 # Help Target
 help:
@@ -159,9 +186,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... proi_project_2"
 	@echo "... edit_cache"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... chess.o"
+	@echo "... chess.i"
+	@echo "... chess.s"
+	@echo "... proi-2.o"
+	@echo "... proi-2.i"
+	@echo "... proi-2.s"
 .PHONY : help
 
 

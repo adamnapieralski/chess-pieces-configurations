@@ -57,30 +57,45 @@ include CMakeFiles/proi_project_2.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/proi_project_2.dir/flags.make
 
-CMakeFiles/proi_project_2.dir/main.cpp.o: CMakeFiles/proi_project_2.dir/flags.make
-CMakeFiles/proi_project_2.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/napiad/studia/eiti/proi/proi-project-2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/proi_project_2.dir/main.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/proi_project_2.dir/main.cpp.o -c /home/napiad/studia/eiti/proi/proi-project-2/main.cpp
+CMakeFiles/proi_project_2.dir/proi-2.cpp.o: CMakeFiles/proi_project_2.dir/flags.make
+CMakeFiles/proi_project_2.dir/proi-2.cpp.o: ../proi-2.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/napiad/studia/eiti/proi/proi-project-2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/proi_project_2.dir/proi-2.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/proi_project_2.dir/proi-2.cpp.o -c /home/napiad/studia/eiti/proi/proi-project-2/proi-2.cpp
 
-CMakeFiles/proi_project_2.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/proi_project_2.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/napiad/studia/eiti/proi/proi-project-2/main.cpp > CMakeFiles/proi_project_2.dir/main.cpp.i
+CMakeFiles/proi_project_2.dir/proi-2.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/proi_project_2.dir/proi-2.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/napiad/studia/eiti/proi/proi-project-2/proi-2.cpp > CMakeFiles/proi_project_2.dir/proi-2.cpp.i
 
-CMakeFiles/proi_project_2.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/proi_project_2.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/napiad/studia/eiti/proi/proi-project-2/main.cpp -o CMakeFiles/proi_project_2.dir/main.cpp.s
+CMakeFiles/proi_project_2.dir/proi-2.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/proi_project_2.dir/proi-2.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/napiad/studia/eiti/proi/proi-project-2/proi-2.cpp -o CMakeFiles/proi_project_2.dir/proi-2.cpp.s
+
+CMakeFiles/proi_project_2.dir/chess.cpp.o: CMakeFiles/proi_project_2.dir/flags.make
+CMakeFiles/proi_project_2.dir/chess.cpp.o: ../chess.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/napiad/studia/eiti/proi/proi-project-2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/proi_project_2.dir/chess.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/proi_project_2.dir/chess.cpp.o -c /home/napiad/studia/eiti/proi/proi-project-2/chess.cpp
+
+CMakeFiles/proi_project_2.dir/chess.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/proi_project_2.dir/chess.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/napiad/studia/eiti/proi/proi-project-2/chess.cpp > CMakeFiles/proi_project_2.dir/chess.cpp.i
+
+CMakeFiles/proi_project_2.dir/chess.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/proi_project_2.dir/chess.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/napiad/studia/eiti/proi/proi-project-2/chess.cpp -o CMakeFiles/proi_project_2.dir/chess.cpp.s
 
 # Object files for target proi_project_2
 proi_project_2_OBJECTS = \
-"CMakeFiles/proi_project_2.dir/main.cpp.o"
+"CMakeFiles/proi_project_2.dir/proi-2.cpp.o" \
+"CMakeFiles/proi_project_2.dir/chess.cpp.o"
 
 # External object files for target proi_project_2
 proi_project_2_EXTERNAL_OBJECTS =
 
-proi_project_2: CMakeFiles/proi_project_2.dir/main.cpp.o
+proi_project_2: CMakeFiles/proi_project_2.dir/proi-2.cpp.o
+proi_project_2: CMakeFiles/proi_project_2.dir/chess.cpp.o
 proi_project_2: CMakeFiles/proi_project_2.dir/build.make
 proi_project_2: CMakeFiles/proi_project_2.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/napiad/studia/eiti/proi/proi-project-2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable proi_project_2"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/napiad/studia/eiti/proi/proi-project-2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable proi_project_2"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/proi_project_2.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

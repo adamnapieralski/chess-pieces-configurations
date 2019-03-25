@@ -4,7 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/napiad/studia/eiti/proi/proi-project-2/main.cpp" "/home/napiad/studia/eiti/proi/proi-project-2/cmake-build-debug/CMakeFiles/proi_project_2.dir/main.cpp.o"
+  "/home/napiad/studia/eiti/proi/proi-project-2/chess.cpp" "/home/napiad/studia/eiti/proi/proi-project-2/cmake-build-debug/CMakeFiles/proi_project_2.dir/chess.cpp.o"
+  "/home/napiad/studia/eiti/proi/proi-project-2/proi-2.cpp" "/home/napiad/studia/eiti/proi/proi-project-2/cmake-build-debug/CMakeFiles/proi_project_2.dir/proi-2.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
