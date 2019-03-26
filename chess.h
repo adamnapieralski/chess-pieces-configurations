@@ -39,7 +39,7 @@ namespace Chess{
 
         Piece(Position posit, Board board1);
         // virtual void setCaptureSquares() = 0;
-        virtual bool isCaptured(Position square);
+        virtual bool isCaptured(Position square) = 0;
     };
 
     class Pawn: public Piece{
