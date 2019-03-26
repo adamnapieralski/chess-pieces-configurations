@@ -7,16 +7,10 @@
 
 #include "chess.h"
 
-Chess::Board::Board(int dimX, int dimY) {
-    this->dimX = dimX;
-    this->dimY = dimY;
+Chess::Position::Position() {
+    this->x = 0;
+    this->y = 0;
 }
-
-Chess::Board::Board(Chess::Board &board) {
-    this->dimX = board.dimX;
-    this->dimY = board.dimY;
-}
-
 Chess::Position::Position(int x1, int y1) {
     this->x = x1;
     this->y = y1;
@@ -27,7 +21,12 @@ Chess::Position::Position(Chess::Position &posit) {
     this->y = posit.y;
 }
 
-Chess::Piece::Piece(Position posit, Board board1): position(posit), board(board1)   {}
+Chess::Piece::Piece() {
+    this->position.x = 0;
+    this->position.y = 0;
+}
+Chess::Piece::Piece(Position posit): position(posit)   {}
+Chess::Piece::Piece(Chess::Piece &piece): position(piece.position)  {}
 
 //void Chess::Pawn::setCaptureSquares() {
 //    //if there is row above
@@ -46,6 +45,10 @@ Chess::Piece::Piece(Position posit, Board board1): position(posit), board(board1
 //    if(this->position.)
 //}
 
+Chess::Pawn::Pawn() {
+    this->position.x = 0;
+    this->position.y = 0;
+}
 bool Chess::Pawn::isCaptured(Chess::Position square) {
     //delta between figure and square in both axes
     int deltaCol = square.x - this->position.x;
@@ -103,4 +106,65 @@ bool Chess::King::isCaptured(Chess::Position square) {
         return true;
     else
         return false;
+}
+
+Chess::Board::Board() {
+    this->dimX = 0;
+    this->dimY = 0;
+    this->positions.clear();
+}
+
+Chess::Board::Board(int dimX, int dimY) {
+    this->dimX = dimX;
+    this->dimY = dimY;
+    for(int i = 0; i < dimX; i++){
+        for(int j = 0; j < dimY; j++){
+            Position positAppend(i, j);
+            this->positions.push_back(positAppend);
+        }
+    }
+}
+
+Chess::Board::Board(Chess::Board &board) {
+    this->dimX = board.dimX;
+    this->dimY = board.dimY;
+    this->positions = board.positions;
+}
+
+bool Chess::Board::setNewPiece(Piece &piece) {
+    //iterate through all chessboard square positions
+    for(auto positIt = this->positions.begin(); positIt != this->positions.end(); positIt++){
+        //try setting piece in square
+        piece.position = *positIt;
+        //iterate through already set pieces on chessboard and count with how many of them piece doesn't capture each other
+        int temp = 0;
+        for(auto pieceIt = this->pieces.begin(); pieceIt != this->pieces.end(); pieceIt){
+            //if they do not capture each other increment temp
+            if(!piece.isCaptured(pieceIt->position) && !(pieceIt->isCaptured(piece.position))){
+                temp++;
+            }
+        }
+        //if piece doesn't capture each other with any of already set pieces
+        if(temp == this->pieces.size()){
+            return true;
+        }
+    }
+    //no place to put new piece
+    return false;
+}
+
+Chess::Node::Node(Chess::Piece *pieceN, Chess::Board boardN, std::array<int, PIECES_TYPES> piecesConfigN):
+piece(*pieceN), board(boardN)
+{
+    this->piecesConfig = piecesConfigN;
+}
+void Chess::noCaptureTraverse(Node* node){
+
+    if(node->piecesConfig[0] > 0){
+        std::array<int, PIECES_TYPES> tempPiecesConfig = node->piecesConfig;
+        tempPiecesConfig[0]--;
+        Pawn *newPawn = new Chess::Pawn();
+
+        noCaptureTraverse(node->P);
+    }
 }

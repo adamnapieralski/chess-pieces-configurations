@@ -8,10 +8,11 @@
 #include <iostream>
 #include <algorithm>
 #include <array>
+#include <typeinfo>
 #include "chess.h"
 
 using namespace std;
-using namespace Chess;
+//using namespace Chess;
 
 class Node{
 public:
@@ -76,14 +77,13 @@ void preorder(Node* node){
 }
 
 int main() {
-    Board board(8, 8);
+    //Board board(8, 8);
 
     char figures[] = {'P', 'P', 'R'};
 
     Node* root = new Node;
     root->set = {2, 1, 1};
     root->board = {0,};
-
     preorder(root);
 
     return 0;
