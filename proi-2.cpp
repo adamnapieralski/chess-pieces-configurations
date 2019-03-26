@@ -25,10 +25,7 @@ public:
 };
 
 void preorder(Node* node){
-    if(!node){
-        delete node;
-        return;
-    }
+
     if(node->symbol == 'A'){
         node->board[0]++;
     }
@@ -74,6 +71,8 @@ void preorder(Node* node){
         node->C = newNode;
         preorder(node->C);
     }
+    cout << "Delete" << endl;
+    delete node;
 }
 
 int main() {
@@ -81,11 +80,11 @@ int main() {
 
     char figures[] = {'P', 'P', 'R'};
 
-    Node root;
-    root.set = {2, 1, 1};
-    root.board = {0,};
+    Node* root = new Node;
+    root->set = {2, 1, 1};
+    root->board = {0,};
 
-    preorder(&root);
+    preorder(root);
 
     return 0;
 }
