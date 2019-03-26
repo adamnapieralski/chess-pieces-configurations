@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/napiad/studia/eiti/proi/proi-project-2/chess.cpp
+chess.h
+/home/napiad/studia/eiti/proi/proi-project-2/chess.h
+
+/home/napiad/studia/eiti/proi/proi-project-2/chess.h
+vector
+-
+math.h
+-
+
+/home/napiad/studia/eiti/proi/proi-project-2/proi-2.cpp
+iostream
+-
+algorithm
+-
+array
+-
+typeinfo
+-
+chess.h
+/home/napiad/studia/eiti/proi/proi-project-2/chess.h
+
