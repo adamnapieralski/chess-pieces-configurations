@@ -23,6 +23,8 @@ namespace Chess{
 
         Position();
         Position(int x1, int y1);
+
+        friend bool operator==(Position p1, Position p2);
         // Position(Position &posit);
     };
 
@@ -77,7 +79,7 @@ namespace Chess{
         std::vector<Chess::Position> positions;
         std::vector<Chess::Piece> pieces;
         Board();
-        // Board(int dimX, int dimY);
+        Board(int dimX, int dimY);
         Board(Board &board);
 
         bool setNewPiece(Piece &piece);

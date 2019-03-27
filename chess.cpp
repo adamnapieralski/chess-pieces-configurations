@@ -16,6 +16,13 @@ Chess::Position::Position(int x1, int y1) {
     this->y = y1;
 }
 
+bool Chess::operator==(Position p1, Position p2){
+    if(p1.x == p2.x && p1.y == p2.y)
+        return true;
+    else
+        return false;
+}
+
 //Chess::Position::Position(Chess::Position &posit) {
 //    this->x = posit.x;
 //    this->y = posit.y;
@@ -117,16 +124,16 @@ Chess::Board::Board() {
     this->positions.clear();
 }
 
-//Chess::Board::Board(int dimX, int dimY) {
-//    this->dimX = dimX;
-//    this->dimY = dimY;
-//    for(int i = 0; i < dimX; i++){
-//        for(int j = 0; j < dimY; j++){
-//            Position positAppend(i, j);
-//            this->positions.push_back(positAppend);
-//        }
-//    }
-//}
+Chess::Board::Board(int dimX, int dimY) {
+    this->dimX = dimX;
+    this->dimY = dimY;
+    for(int i = 0; i < dimX; i++){
+        for(int j = 0; j < dimY; j++){
+            Position positAppend(i, j);
+            this->positions.push_back(positAppend);
+        }
+    }
+}
 
 Chess::Board::Board(Chess::Board &board) {
     this->dimX = board.dimX;
@@ -141,11 +148,12 @@ bool Chess::Board::setNewPiece(Piece &piece) {
         piece.position = *positIt;
         //iterate through already set pieces on chessboard and count with how many of them piece doesn't capture each other
         int temp = 0;
-        for(auto pieceIt = this->pieces.begin(); pieceIt != this->pieces.end(); pieceIt){
-            //if they do not capture each other increment temp
-            if(!piece.isCaptured(pieceIt->position) && !(pieceIt->isCaptured(piece.position))){
-                temp++;
+        for(auto pieceIt = this->pieces.begin(); pieceIt != this->pieces.end(); pieceIt++){
+            //if they capture each other or are on the same squares
+            if(piece.isCaptured(pieceIt->position) || pieceIt->isCaptured(piece.position) || pieceIt->position == piece.position){
+                break;
             }
+            temp++;
         }
         //if piece doesn't capture each other with any of already set pieces
         if(temp == this->pieces.size()){
@@ -168,9 +176,60 @@ void Chess::noCaptureTraverse(Node* node){
     if(node->piecesConfig[0] > 0){
         std::array<int, PIECES_TYPES> tempPiecesConfig = node->piecesConfig;
         tempPiecesConfig[0]--;
-        Pawn *newPawn = new Chess::Pawn();
+        auto *newPawn = new Chess::Pawn();
+        node->board.setNewPiece(*newPawn);
         Node *nodeP = new Node(newPawn, node->board, tempPiecesConfig);
         node->P = nodeP;
         noCaptureTraverse(node->P);
+    }
+
+    if(node->piecesConfig[1] > 0){
+        std::array<int, PIECES_TYPES> tempPiecesConfig = node->piecesConfig;
+        tempPiecesConfig[1]--;
+        auto *newRook = new Chess::Rook();
+        node->board.setNewPiece(*newRook);
+        Node *nodeR = new Node(newRook, node->board, tempPiecesConfig);
+        node->R = nodeR;
+        noCaptureTraverse(node->R);
+    }
+
+    if(node->piecesConfig[2] > 0){
+        std::array<int, PIECES_TYPES> tempPiecesConfig = node->piecesConfig;
+        tempPiecesConfig[2]--;
+        auto *newBishop = new Chess::Bishop();
+        node->board.setNewPiece(*newBishop);
+        Node *nodeB = new Node(newBishop, node->board, tempPiecesConfig);
+        node->B = nodeB;
+        noCaptureTraverse(node->B);
+    }
+
+    if(node->piecesConfig[3] > 0){
+        std::array<int, PIECES_TYPES> tempPiecesConfig = node->piecesConfig;
+        tempPiecesConfig[3]--;
+        auto *newKnight= new Chess::Knight();
+        node->board.setNewPiece(*newKnight);
+        Node *nodeN = new Node(newKnight, node->board, tempPiecesConfig);
+        node->N = nodeN;
+        noCaptureTraverse(node->N);
+    }
+
+    if(node->piecesConfig[4] > 0){
+        std::array<int, PIECES_TYPES> tempPiecesConfig = node->piecesConfig;
+        tempPiecesConfig[4]--;
+        auto *newQueen = new Chess::Queen();
+        node->board.setNewPiece(*newQueen);
+        Node *nodeQ = new Node(newQueen, node->board, tempPiecesConfig);
+        node->Q = nodeQ;
+        noCaptureTraverse(node->Q);
+    }
+
+    if(node->piecesConfig[5] > 0){
+        std::array<int, PIECES_TYPES> tempPiecesConfig = node->piecesConfig;
+        tempPiecesConfig[5]--;
+        auto *newKing = new Chess::King();
+        node->board.setNewPiece(*newKing);
+        Node *nodeK = new Node(newKing, node->board, tempPiecesConfig);
+        node->K = nodeK;
+        noCaptureTraverse(node->K);
     }
 }
