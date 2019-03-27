@@ -76,6 +76,10 @@ void preorder(Node* node){
     delete node;
 }
 
+bool f(Chess::Piece *P){
+    cout << P->position.x << endl;
+}
+
 int main() {
     //Board board(8, 8);
 
@@ -85,6 +89,10 @@ int main() {
     root->set = {2, 1, 1};
     root->board = {0,};
     preorder(root);
+
+    Chess::Piece *p = new Chess::Pawn();
+    f(p);
+//    cout << piece->position.x << endl;
 
     return 0;
 }

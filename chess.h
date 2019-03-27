@@ -23,7 +23,7 @@ namespace Chess{
 
         Position();
         Position(int x1, int y1);
-        Position(Position &posit);
+        // Position(Position &posit);
     };
 
     class Piece{
@@ -40,7 +40,7 @@ namespace Chess{
     class Pawn: public Piece{
     public:
         Pawn();
-        Pawn(Position positP);
+        // Pawn(Position positP);
         bool isCaptured(Position square) override;
         // void setCaptureSquares() override;
     };
@@ -77,7 +77,7 @@ namespace Chess{
         std::vector<Chess::Position> positions;
         std::vector<Chess::Piece> pieces;
         Board();
-        Board(int dimX, int dimY);
+        // Board(int dimX, int dimY);
         Board(Board &board);
 
         bool setNewPiece(Piece &piece);
@@ -85,7 +85,7 @@ namespace Chess{
 
     class Node{
     public:
-        Piece &piece;
+        Piece *piece;
         Board board;
         //array with remaining number of occurences for each piece
         std::array<int, PIECES_TYPES> piecesConfig;
@@ -93,7 +93,7 @@ namespace Chess{
         //pointers to children nodes
         Node *P, *R, *B, *N, *Q, *K;
 
-        Node(Piece *pieceN, Board boardN, std::array<int, PIECES_TYPES> piecesConfigN);
+        Node(Chess::Piece *pieceN, Board boardN, std::array<int, PIECES_TYPES> piecesConfigN);
         friend void noCaptureTraverse(Node* node);
     };
 }

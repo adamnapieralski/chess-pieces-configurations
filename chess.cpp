@@ -16,16 +16,18 @@ Chess::Position::Position(int x1, int y1) {
     this->y = y1;
 }
 
-Chess::Position::Position(Chess::Position &posit) {
-    this->x = posit.x;
-    this->y = posit.y;
-}
+//Chess::Position::Position(Chess::Position &posit) {
+//    this->x = posit.x;
+//    this->y = posit.y;
+//}
 
 Chess::Piece::Piece() {
     this->position.x = 0;
     this->position.y = 0;
 }
+
 Chess::Piece::Piece(Position posit): position(posit)   {}
+
 Chess::Piece::Piece(Chess::Piece &piece): position(piece.position)  {}
 
 //void Chess::Pawn::setCaptureSquares() {
@@ -49,6 +51,7 @@ Chess::Pawn::Pawn() {
     this->position.x = 0;
     this->position.y = 0;
 }
+
 bool Chess::Pawn::isCaptured(Chess::Position square) {
     //delta between figure and square in both axes
     int deltaCol = square.x - this->position.x;
@@ -114,16 +117,16 @@ Chess::Board::Board() {
     this->positions.clear();
 }
 
-Chess::Board::Board(int dimX, int dimY) {
-    this->dimX = dimX;
-    this->dimY = dimY;
-    for(int i = 0; i < dimX; i++){
-        for(int j = 0; j < dimY; j++){
-            Position positAppend(i, j);
-            this->positions.push_back(positAppend);
-        }
-    }
-}
+//Chess::Board::Board(int dimX, int dimY) {
+//    this->dimX = dimX;
+//    this->dimY = dimY;
+//    for(int i = 0; i < dimX; i++){
+//        for(int j = 0; j < dimY; j++){
+//            Position positAppend(i, j);
+//            this->positions.push_back(positAppend);
+//        }
+//    }
+//}
 
 Chess::Board::Board(Chess::Board &board) {
     this->dimX = board.dimX;
@@ -154,17 +157,20 @@ bool Chess::Board::setNewPiece(Piece &piece) {
 }
 
 Chess::Node::Node(Chess::Piece *pieceN, Chess::Board boardN, std::array<int, PIECES_TYPES> piecesConfigN):
-piece(*pieceN), board(boardN)
+board(boardN)
 {
+    this->piece = pieceN;
     this->piecesConfig = piecesConfigN;
 }
+
 void Chess::noCaptureTraverse(Node* node){
 
     if(node->piecesConfig[0] > 0){
         std::array<int, PIECES_TYPES> tempPiecesConfig = node->piecesConfig;
         tempPiecesConfig[0]--;
         Pawn *newPawn = new Chess::Pawn();
-
+        Node *nodeP = new Node(newPawn, node->board, tempPiecesConfig);
+        node->P = nodeP;
         noCaptureTraverse(node->P);
     }
 }
