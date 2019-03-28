@@ -70,12 +70,20 @@ bool Chess::Pawn::isCaptured(Chess::Position square) {
         return false;
 }
 
+char Chess::Pawn::getSymbol() const {
+    return 'P';
+}
+
 bool Chess::Rook::isCaptured(Chess::Position square) {
     //if row or column are the same
     if(square.x == this->position.x || square.y == this->position.y)
         return true;
     else
         return false;
+}
+
+char Chess::Rook::getSymbol() const {
+    return 'R';
 }
 
 bool Chess::Bishop::isCaptured(Chess::Position square) {
@@ -88,6 +96,10 @@ bool Chess::Bishop::isCaptured(Chess::Position square) {
         return false;
 }
 
+char Chess::Bishop::getSymbol() const {
+    return 'B';
+}
+
 bool Chess::Knight::isCaptured(Chess::Position square) {
     int deltaCol = square.x - this->position.x;
     int deltaRow = square.y - this->position.y;
@@ -96,6 +108,10 @@ bool Chess::Knight::isCaptured(Chess::Position square) {
         return true;
     else
         return false;
+}
+
+char Chess::Knight::getSymbol() const {
+    return 'N';
 }
 
 bool Chess::Queen::isCaptured(Chess::Position square) {
@@ -108,6 +124,9 @@ bool Chess::Queen::isCaptured(Chess::Position square) {
         return false;
 }
 
+char Chess::Queen::getSymbol() const {
+    return 'Q';
+}
 bool Chess::King::isCaptured(Chess::Position square) {
     int deltaCol = square.x - this->position.x;
     int deltaRow = square.y - this->position.y;
@@ -116,6 +135,10 @@ bool Chess::King::isCaptured(Chess::Position square) {
         return true;
     else
         return false;
+}
+
+char Chess::King::getSymbol() const {
+    return 'K';
 }
 
 Chess::Board::Board() {
@@ -127,6 +150,7 @@ Chess::Board::Board() {
 Chess::Board::Board(int dimX, int dimY) {
     this->dimX = dimX;
     this->dimY = dimY;
+    //initialize vector of square positions on board
     for(int i = 0; i < dimX; i++){
         for(int j = 0; j < dimY; j++){
             Position positAppend(i, j);
@@ -164,6 +188,29 @@ bool Chess::Board::setNewPiece(Piece &piece) {
     return false;
 }
 
+
+std::ostream& Chess::operator<<(std::ostream& os, const Chess::Board& board) {
+    for(int i = 0; i < board.dimY; i++){
+        for(int j = 0; j < board.dimX; j++){
+            Chess::Position *pTemp = new Chess::Position(j, i);
+            bool isPiece = false;
+            for(auto pieceIt = board.pieces.begin(); pieceIt != board.pieces.end(); pieceIt++){
+                if(*pTemp == pieceIt->position){
+                    os << pieceIt->getSymbol() << " ";
+                    isPiece = true;
+                    break;
+                }
+            }
+            if(!isPiece){
+                os << "_ ";
+            }
+
+        }
+        os << std::endl;
+    }
+    return os;
+}
+
 Chess::Node::Node(Chess::Piece *pieceN, Chess::Board boardN, std::array<int, PIECES_TYPES> piecesConfigN):
 board(boardN)
 {
@@ -174,6 +221,7 @@ board(boardN)
 void Chess::noCaptureTraverse(Node* node){
 
     if(node->piecesConfig[0] > 0){
+        std::cout << "Cos" << std::endl;
         std::array<int, PIECES_TYPES> tempPiecesConfig = node->piecesConfig;
         tempPiecesConfig[0]--;
         auto *newPawn = new Chess::Pawn();

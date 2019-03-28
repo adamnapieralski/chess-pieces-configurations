@@ -6,15 +6,25 @@
 
 #IncludeRegexTransform: 
 
-/home/napiad/studia/eiti/proi/proi-project-2/chess.cpp
-chess.h
 /home/napiad/studia/eiti/proi/proi-project-2/chess.h
-
-/home/napiad/studia/eiti/proi/proi-project-2/chess.h
+iostream
+-
 vector
 -
 array
 -
 math.h
 -
+
+/home/napiad/studia/eiti/proi/proi-project-2/proi-2.cpp
+iostream
+-
+algorithm
+-
+array
+-
+typeinfo
+-
+chess.h
+/home/napiad/studia/eiti/proi/proi-project-2/chess.h
 

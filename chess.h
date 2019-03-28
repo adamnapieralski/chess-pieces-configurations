@@ -8,6 +8,7 @@
 #ifndef CHESS_H
 #define CHESS_H
 
+#include <iostream>
 #include <vector>
 #include <array>
 #include <math.h>
@@ -37,6 +38,7 @@ namespace Chess{
         Piece(Piece &piece);
         // virtual void setCaptureSquares() = 0;
         virtual bool isCaptured(Position square) = 0;
+        virtual char getSymbol() const = 0;
     };
 
     class Pawn: public Piece{
@@ -44,32 +46,38 @@ namespace Chess{
         Pawn();
         // Pawn(Position positP);
         bool isCaptured(Position square) override;
+        char getSymbol() const override;
         // void setCaptureSquares() override;
     };
 
     class Rook: public Piece{
     public:
         bool isCaptured(Position square) override;
+        char getSymbol() const override;
     };
 
     class Bishop: public Piece{
     public:
         bool isCaptured(Position square) override;
+        char getSymbol() const override;
     };
 
     class Knight: public Piece{
     public:
         bool isCaptured(Position square) override;
+        char getSymbol() const override;
     };
 
     class Queen: public Piece{
     public:
         bool isCaptured(Position square) override;
+        char getSymbol() const override;
     };
 
     class King: public Piece{
     public:
         bool isCaptured(Position square) override;
+        char getSymbol() const override;
     };
 
     class Board{
@@ -83,6 +91,7 @@ namespace Chess{
         Board(Board &board);
 
         bool setNewPiece(Piece &piece);
+        friend std::ostream& operator<<(std::ostream& os, const Chess::Board& board);
     };
 
     class Node{

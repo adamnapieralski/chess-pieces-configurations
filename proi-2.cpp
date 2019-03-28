@@ -84,6 +84,11 @@ int main() {
 //    root->board = {0,};
 //    preorder(root);
 
+    Chess::Board board(2, 2);
+    array<int, PIECES_TYPES> pConfig = {2, 0, };
+    cout << board << endl;
+    Chess::Node* root = new Chess::Node(NULL, board, pConfig);
+    noCaptureTraverse(root);
 
     return 0;
 }
