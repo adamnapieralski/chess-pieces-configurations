@@ -37,22 +37,22 @@ Chess::Piece::Piece(Position posit): position(posit)   {}
 
 Chess::Piece::Piece(Chess::Piece &piece): position(piece.position)  {}
 
-//void Chess::Pawn::setCaptureSquares() {
-//    //if there is row above
-//    if(this->position.y < this->board.dimY){
-//        //if there is column to the left
-//        if(this->position.x > this->board.dimX){
-//            Position pCapt(this->position.x - 1, this->position.y + 1);
-//            this->captureSquares.push_back(pCapt);
-//        }
-//        //if there is column to the right
-//        if(this->position.x < this->board.dimX){
-//            Position pCapt(this->position.x + 1, this->position.y + 1);
-//            this->captureSquares.push_back(pCapt);
-//        }
-//    }
-//    if(this->position.)
-//}
+Chess::Piece* Chess::newPiece(int pieceSym){
+    switch(pieceSym){
+        case 0:
+            return new Chess::Pawn();
+        case 1:
+            return new Chess::Rook();
+        case 2:
+            return new Chess::Bishop();
+        case 3:
+            return new Chess::Knight();
+        case 4:
+            return new Chess::Queen();
+        case 5:
+            return new Chess::King();
+    }
+}
 
 Chess::Pawn::Pawn() {
     this->position.x = 0;
@@ -190,7 +190,6 @@ bool Chess::Board::setNewPiece(Piece &piece) {
     return false;
 }
 
-
 std::ostream& Chess::operator<<(std::ostream& os, const Chess::Board& board) {
     for(int i = 0; i < board.dimY; i++){
         for(int j = 0; j < board.dimX; j++){
@@ -227,97 +226,18 @@ Chess::Board* Chess::noCaptureTraverse(Node* node){
         return &node->board;
     }
     Chess::Board* resultBoard;
-    if(node->piecesConfig[0] > 0){
+
+    for(int i = 0; i < PIECES_TYPES; ++i){
         std::array<int, PIECES_TYPES> newPiecesConfig = node->piecesConfig;
-        newPiecesConfig[0]--;
-        auto *newPawn = new Chess::Pawn();
-        Chess::Board newBoard = node->board;
-        if(!newBoard.setNewPiece(*newPawn)){
+        newPiecesConfig[i]--;
+        auto newPiece = Chess::newPiece(i);
+        auto newBoard = node->board;
+        if(!newBoard.setNewPiece(*newPiece)){
             return nullptr;
         }
-        Node *nodeP = new Node(newPawn, newBoard, newPiecesConfig);
-        node->P = nodeP;
-        resultBoard = noCaptureTraverse(node->P);
-        if(resultBoard){
-            return resultBoard;
-        }
-    }
-
-    if(node->piecesConfig[1] > 0){
-        std::array<int, PIECES_TYPES> tempPiecesConfig = node->piecesConfig;
-        tempPiecesConfig[1]--;
-        auto *newRook = new Chess::Rook();
-        Chess::Board newBoard = node->board;
-        if(!newBoard.setNewPiece(*newRook)){
-            return nullptr;
-        }
-        Node *nodeR = new Node(newRook, newBoard, tempPiecesConfig);
-        node->R = nodeR;
-        resultBoard = noCaptureTraverse(node->R);
-        if(resultBoard){
-            return resultBoard;
-        }
-    }
-
-    if(node->piecesConfig[2] > 0){
-        std::array<int, PIECES_TYPES> tempPiecesConfig = node->piecesConfig;
-        tempPiecesConfig[2]--;
-        auto *newBishop = new Chess::Bishop();
-        Chess::Board newBoard = node->board;
-        if(!newBoard.setNewPiece(*newBishop)){
-            return nullptr;
-        }
-        Node *nodeB = new Node(newBishop, newBoard, tempPiecesConfig);
-        node->B = nodeB;
-        resultBoard = noCaptureTraverse(node->B);
-        if(resultBoard){
-            return resultBoard;
-        }
-    }
-
-    if(node->piecesConfig[3] > 0){
-        std::array<int, PIECES_TYPES> tempPiecesConfig = node->piecesConfig;
-        tempPiecesConfig[3]--;
-        auto *newKnight= new Chess::Knight();
-        Chess::Board newBoard = node->board;
-        if(!newBoard.setNewPiece(*newKnight)){
-            return nullptr;
-        }
-        Node *nodeN = new Node(newKnight, newBoard, tempPiecesConfig);
-        node->N = nodeN;
-        resultBoard = noCaptureTraverse(node->N);
-        if(resultBoard){
-            return resultBoard;
-        }
-    }
-
-    if(node->piecesConfig[4] > 0){
-        std::array<int, PIECES_TYPES> tempPiecesConfig = node->piecesConfig;
-        tempPiecesConfig[4]--;
-        auto *newQueen = new Chess::Queen();
-        Chess::Board newBoard = node->board;
-        if(!newBoard.setNewPiece(*newQueen)){
-            return nullptr;
-        }
-        Node *nodeQ = new Node(newQueen, newBoard, tempPiecesConfig);
-        node->Q = nodeQ;
-        resultBoard = noCaptureTraverse(node->Q);
-        if(resultBoard){
-            return resultBoard;
-        }
-    }
-
-    if(node->piecesConfig[5] > 0){
-        std::array<int, PIECES_TYPES> tempPiecesConfig = node->piecesConfig;
-        tempPiecesConfig[5]--;
-        auto *newKing = new Chess::King();
-        Chess::Board newBoard = node->board;
-        if(!newBoard.setNewPiece(*newKing)){
-            return nullptr;
-        }
-        Node *nodeK = new Node(newKing, newBoard, tempPiecesConfig);
-        node->K = nodeK;
-        resultBoard = noCaptureTraverse(node->K);
+        auto newNode = new Node(newPiece, newBoard, newPiecesConfig);
+        node->piecesNodes[i] = newNode;
+        resultBoard = noCaptureTraverse(node->piecesNodes[i]);
         if(resultBoard){
             return resultBoard;
         }

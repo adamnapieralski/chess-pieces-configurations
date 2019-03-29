@@ -39,6 +39,8 @@ namespace Chess{
         // virtual void setCaptureSquares() = 0;
         virtual bool isCaptured(Position square) = 0;
         virtual char getSymbol() const = 0;
+
+        friend Piece* newPiece(int pieceSym);
     };
 
     class Pawn: public Piece{
@@ -103,6 +105,7 @@ namespace Chess{
 
         //pointers to children nodes
         Node *P, *R, *B, *N, *Q, *K;
+        std::array<Chess::Node*, PIECES_TYPES> piecesNodes;
 
         Node(Chess::Piece *pieceN, Board boardN, std::array<int, PIECES_TYPES> piecesConfigN);
         friend Chess::Board* noCaptureTraverse(Node* node);
