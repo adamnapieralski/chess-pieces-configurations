@@ -15,13 +15,13 @@ using namespace std;
 //using namespace Chess;
 
 int main() {
-    Chess::Board board(6, 6);
-    array<int, PIECES_TYPES> pConfig = {3, 1, 3, 1, 1, 1};
+    Chess::Board board(1, 1);
+    array<int, PIECES_TYPES> pConfig = {1, 0, 0,};
     Chess::Node* root = new Chess::Node(nullptr, board, pConfig);
-    auto resultBoard = noCaptureTraverse(root);
+    auto resultBoard = noCaptureTraverse(root, true);
     if(resultBoard){
         cout << "Przykladowa szachownica o podanej konfiguracji figur:" << endl << endl;
-        cout << *resultBoard << endl;
+        //cout << *resultBoard << endl;
     }
     else{
         cout << "Brak mozliwosci ustawienia podanej konfiguracji figur na danej szachownicy." << endl;

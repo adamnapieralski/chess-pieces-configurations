@@ -103,12 +103,11 @@ namespace Chess{
         //array with remaining number of occurences for each piece
         std::array<int, PIECES_TYPES> piecesConfig;
 
-        //pointers to children nodes
-        Node *P, *R, *B, *N, *Q, *K;
+        //array of pointers to children nodes
         std::array<Chess::Node*, PIECES_TYPES> piecesNodes;
 
         Node(Chess::Piece *pieceN, Board boardN, std::array<int, PIECES_TYPES> piecesConfigN);
-        friend Chess::Board* noCaptureTraverse(Node* node);
+        friend Chess::Board* noCaptureTraverse(Node* node, bool printAll);
     };
 }
 

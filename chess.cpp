@@ -205,7 +205,7 @@ std::ostream& Chess::operator<<(std::ostream& os, const Chess::Board& board) {
             if(!isPiece){
                 os << "_ ";
             }
-
+            delete pTemp;
         }
         os << std::endl;
     }
@@ -219,28 +219,41 @@ board(boardN)
     this->piecesConfig = piecesConfigN;
 }
 
-Chess::Board* Chess::noCaptureTraverse(Node* node){
+Chess::Board* Chess::noCaptureTraverse(Node* node, bool printAll){
     std::array<int, 6> zeroConfig = {0, };
     if(node->piecesConfig == zeroConfig){
-        //std::cout << node->board << std::endl;
+        std::cout << node->board << std::endl;
+        delete node->piece;
+        delete node;
         return &node->board;
     }
     Chess::Board* resultBoard;
-
+    std::array<int, PIECES_TYPES> newPiecesConfig;
     for(int i = 0; i < PIECES_TYPES; ++i){
-        std::array<int, PIECES_TYPES> newPiecesConfig = node->piecesConfig;
-        newPiecesConfig[i]--;
-        auto newPiece = Chess::newPiece(i);
-        auto newBoard = node->board;
-        if(!newBoard.setNewPiece(*newPiece)){
-            return nullptr;
-        }
-        auto newNode = new Node(newPiece, newBoard, newPiecesConfig);
-        node->piecesNodes[i] = newNode;
-        resultBoard = noCaptureTraverse(node->piecesNodes[i]);
-        if(resultBoard){
-            return resultBoard;
+        if(node->piecesConfig[i] > 0){
+            newPiecesConfig = node->piecesConfig;
+            --newPiecesConfig[i];
+            auto newPiece = Chess::newPiece(i);
+            auto newBoard = node->board;
+            if(!newBoard.setNewPiece(*newPiece)){
+                delete newPiece;
+                delete node->piece;
+                delete node;
+                return nullptr;
+            }
+            auto newNode = new Node(newPiece, newBoard, newPiecesConfig);
+            node->piecesNodes[i] = newNode;
+            resultBoard = noCaptureTraverse(node->piecesNodes[i], printAll);
+            if(resultBoard){
+                if(!printAll){
+                    delete newPiece;
+                    delete node->piece;
+                    delete node;
+                    return resultBoard;
+                }
+            }
         }
     }
+    delete node->piece;
     delete node;
 }
