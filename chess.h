@@ -85,7 +85,7 @@ namespace Chess{
         int dimX;
         int dimY;
         std::vector<Chess::Position> positions;
-        std::vector<Chess::Piece> pieces;
+        std::vector<Chess::Piece*> pieces;
         Board();
         Board(int dimX, int dimY);
         Board(Board &board);

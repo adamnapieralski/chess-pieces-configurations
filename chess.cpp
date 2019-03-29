@@ -151,9 +151,9 @@ Chess::Board::Board(int dimX, int dimY) {
     this->dimX = dimX;
     this->dimY = dimY;
     //initialize vector of square positions on board
-    for(int i = 0; i < dimX; i++){
-        for(int j = 0; j < dimY; j++){
-            Position positAppend(i, j);
+    for(int i = 0; i < dimY; i++){
+        for(int j = 0; j < dimX; j++){
+            Position positAppend(j, i);
             this->positions.push_back(positAppend);
         }
     }
@@ -163,6 +163,7 @@ Chess::Board::Board(Chess::Board &board) {
     this->dimX = board.dimX;
     this->dimY = board.dimY;
     this->positions = board.positions;
+    this->pieces = board.pieces;
 }
 
 bool Chess::Board::setNewPiece(Piece &piece) {
@@ -174,13 +175,14 @@ bool Chess::Board::setNewPiece(Piece &piece) {
         int temp = 0;
         for(auto pieceIt = this->pieces.begin(); pieceIt != this->pieces.end(); pieceIt++){
             //if they capture each other or are on the same squares
-            if(piece.isCaptured(pieceIt->position) || pieceIt->isCaptured(piece.position) || pieceIt->position == piece.position){
+            if(piece.isCaptured((*pieceIt)->position) || (*pieceIt)->isCaptured(piece.position) || (*pieceIt)->position == piece.position){
                 break;
             }
             temp++;
         }
         //if piece doesn't capture each other with any of already set pieces
         if(temp == this->pieces.size()){
+            this->pieces.push_back(&piece);
             return true;
         }
     }
@@ -195,8 +197,8 @@ std::ostream& Chess::operator<<(std::ostream& os, const Chess::Board& board) {
             Chess::Position *pTemp = new Chess::Position(j, i);
             bool isPiece = false;
             for(auto pieceIt = board.pieces.begin(); pieceIt != board.pieces.end(); pieceIt++){
-                if(*pTemp == pieceIt->position){
-                    os << pieceIt->getSymbol() << " ";
+                if(*pTemp == (*pieceIt)->position){
+                    os << (*pieceIt)->getSymbol() << " ";
                     isPiece = true;
                     break;
                 }
@@ -219,14 +221,19 @@ board(boardN)
 }
 
 void Chess::noCaptureTraverse(Node* node){
-
+    std::array<int, 6> zeroConfig = {0, };
+    if(node->piecesConfig == zeroConfig){
+        std::cout << node->board << std::endl;
+    }
     if(node->piecesConfig[0] > 0){
-        std::cout << "Cos" << std::endl;
-        std::array<int, PIECES_TYPES> tempPiecesConfig = node->piecesConfig;
-        tempPiecesConfig[0]--;
+        std::array<int, PIECES_TYPES> newPiecesConfig = node->piecesConfig;
+        newPiecesConfig[0]--;
         auto *newPawn = new Chess::Pawn();
-        node->board.setNewPiece(*newPawn);
-        Node *nodeP = new Node(newPawn, node->board, tempPiecesConfig);
+        Chess::Board newBoard = node->board;
+        if(!newBoard.setNewPiece(*newPawn)){
+            return;
+        }
+        Node *nodeP = new Node(newPawn, newBoard, newPiecesConfig);
         node->P = nodeP;
         noCaptureTraverse(node->P);
     }
@@ -235,8 +242,11 @@ void Chess::noCaptureTraverse(Node* node){
         std::array<int, PIECES_TYPES> tempPiecesConfig = node->piecesConfig;
         tempPiecesConfig[1]--;
         auto *newRook = new Chess::Rook();
-        node->board.setNewPiece(*newRook);
-        Node *nodeR = new Node(newRook, node->board, tempPiecesConfig);
+        Chess::Board newBoard = node->board;
+        if(!newBoard.setNewPiece(*newRook)){
+            return;
+        }
+        Node *nodeR = new Node(newRook, newBoard, tempPiecesConfig);
         node->R = nodeR;
         noCaptureTraverse(node->R);
     }
@@ -245,8 +255,11 @@ void Chess::noCaptureTraverse(Node* node){
         std::array<int, PIECES_TYPES> tempPiecesConfig = node->piecesConfig;
         tempPiecesConfig[2]--;
         auto *newBishop = new Chess::Bishop();
-        node->board.setNewPiece(*newBishop);
-        Node *nodeB = new Node(newBishop, node->board, tempPiecesConfig);
+        Chess::Board newBoard = node->board;
+        if(!newBoard.setNewPiece(*newBishop)){
+            return;
+        }
+        Node *nodeB = new Node(newBishop, newBoard, tempPiecesConfig);
         node->B = nodeB;
         noCaptureTraverse(node->B);
     }
@@ -255,8 +268,11 @@ void Chess::noCaptureTraverse(Node* node){
         std::array<int, PIECES_TYPES> tempPiecesConfig = node->piecesConfig;
         tempPiecesConfig[3]--;
         auto *newKnight= new Chess::Knight();
-        node->board.setNewPiece(*newKnight);
-        Node *nodeN = new Node(newKnight, node->board, tempPiecesConfig);
+        Chess::Board newBoard = node->board;
+        if(!newBoard.setNewPiece(*newKnight)){
+            return;
+        }
+        Node *nodeN = new Node(newKnight, newBoard, tempPiecesConfig);
         node->N = nodeN;
         noCaptureTraverse(node->N);
     }
@@ -265,8 +281,11 @@ void Chess::noCaptureTraverse(Node* node){
         std::array<int, PIECES_TYPES> tempPiecesConfig = node->piecesConfig;
         tempPiecesConfig[4]--;
         auto *newQueen = new Chess::Queen();
-        node->board.setNewPiece(*newQueen);
-        Node *nodeQ = new Node(newQueen, node->board, tempPiecesConfig);
+        Chess::Board newBoard = node->board;
+        if(!newBoard.setNewPiece(*newQueen)){
+            return;
+        }
+        Node *nodeQ = new Node(newQueen, newBoard, tempPiecesConfig);
         node->Q = nodeQ;
         noCaptureTraverse(node->Q);
     }
@@ -275,9 +294,13 @@ void Chess::noCaptureTraverse(Node* node){
         std::array<int, PIECES_TYPES> tempPiecesConfig = node->piecesConfig;
         tempPiecesConfig[5]--;
         auto *newKing = new Chess::King();
-        node->board.setNewPiece(*newKing);
-        Node *nodeK = new Node(newKing, node->board, tempPiecesConfig);
+        Chess::Board newBoard = node->board;
+        if(!newBoard.setNewPiece(*newKing)){
+            return;
+        }
+        Node *nodeK = new Node(newKing, newBoard, tempPiecesConfig);
         node->K = nodeK;
         noCaptureTraverse(node->K);
     }
+    delete node;
 }
