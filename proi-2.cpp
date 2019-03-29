@@ -14,81 +14,18 @@
 using namespace std;
 //using namespace Chess;
 
-class Node{
-public:
-    Node* parent;
-    Node* A;
-    Node* B;
-    Node* C;
-    char symbol;
-    array<int, 3> board;
-    array<int, 3> set;
-};
-
-void preorder(Node* node){
-
-    if(node->symbol == 'A'){
-        node->board[0]++;
-    }
-    if(node->symbol == 'B'){
-        node->board[1]++;
-    }
-    if(node->symbol == 'C'){
-        node->board[2]++;
-    }
-    if(node->set[0] > 0){
-        array<int, 3> setTemp = node->set;
-        setTemp[0]--;
-        Node* newNode = new Node;
-        newNode->parent = node;
-        newNode->symbol = 'A';
-        cout << 'A' << "\t" << node->board[0] << node->board[1] << node->board[2] << endl;
-        newNode->set = setTemp;
-        newNode->board = node->board;
-        node->A = newNode;
-        preorder(node->A);
-    }
-    if(node->set[1] > 0){
-        array<int, 3> setTemp = node->set;
-        setTemp[1]--;
-        Node* newNode = new Node;
-        newNode->parent = node;
-        newNode->symbol = 'B';
-        cout << 'B' << "\t" << node->board[0] << node->board[1] << node->board[2] << endl;
-        newNode->set = setTemp;
-        newNode->board = node->board;
-        node->B = newNode;
-        preorder(node->B);
-    }
-    if(node->set[2] > 0){
-        array<int, 3> setTemp = node->set;
-        setTemp[2]--;
-        Node* newNode = new Node;
-        newNode->parent = node;
-        newNode->symbol = 'C';
-        cout << 'C' << "\t" << node->board[0] << node->board[1] << node->board[2] << endl;
-        newNode->set = setTemp;
-        newNode->board = node->board;
-        node->C = newNode;
-        preorder(node->C);
-    }
-    cout << "Delete" << endl;
-    delete node;
-}
-
 int main() {
-    //Board board(8, 8);
-
-//    Node* root = new Node;
-//    root->set = {2, 1, 1};
-//    root->board = {0,};
-//    preorder(root);
-
-    Chess::Board board(4, 4);
-    array<int, PIECES_TYPES> pConfig = {3, 1, 2};
-    //cout << board << endl;
+    Chess::Board board(6, 6);
+    array<int, PIECES_TYPES> pConfig = {3, 1, 3, 1, 1, 1};
     Chess::Node* root = new Chess::Node(nullptr, board, pConfig);
-    noCaptureTraverse(root);
+    auto resultBoard = noCaptureTraverse(root);
+    if(resultBoard){
+        cout << "Przykladowa szachownica o podanej konfiguracji figur:" << endl << endl;
+        cout << *resultBoard << endl;
+    }
+    else{
+        cout << "Brak mozliwosci ustawienia podanej konfiguracji figur na danej szachownicy." << endl;
+    }
 
     return 0;
 }

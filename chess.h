@@ -105,7 +105,7 @@ namespace Chess{
         Node *P, *R, *B, *N, *Q, *K;
 
         Node(Chess::Piece *pieceN, Board boardN, std::array<int, PIECES_TYPES> piecesConfigN);
-        friend void noCaptureTraverse(Node* node);
+        friend Chess::Board* noCaptureTraverse(Node* node);
     };
 }
 

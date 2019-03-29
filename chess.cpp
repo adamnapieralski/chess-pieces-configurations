@@ -220,22 +220,27 @@ board(boardN)
     this->piecesConfig = piecesConfigN;
 }
 
-void Chess::noCaptureTraverse(Node* node){
+Chess::Board* Chess::noCaptureTraverse(Node* node){
     std::array<int, 6> zeroConfig = {0, };
     if(node->piecesConfig == zeroConfig){
-        std::cout << node->board << std::endl;
+        //std::cout << node->board << std::endl;
+        return &node->board;
     }
+    Chess::Board* resultBoard;
     if(node->piecesConfig[0] > 0){
         std::array<int, PIECES_TYPES> newPiecesConfig = node->piecesConfig;
         newPiecesConfig[0]--;
         auto *newPawn = new Chess::Pawn();
         Chess::Board newBoard = node->board;
         if(!newBoard.setNewPiece(*newPawn)){
-            return;
+            return nullptr;
         }
         Node *nodeP = new Node(newPawn, newBoard, newPiecesConfig);
         node->P = nodeP;
-        noCaptureTraverse(node->P);
+        resultBoard = noCaptureTraverse(node->P);
+        if(resultBoard){
+            return resultBoard;
+        }
     }
 
     if(node->piecesConfig[1] > 0){
@@ -244,11 +249,14 @@ void Chess::noCaptureTraverse(Node* node){
         auto *newRook = new Chess::Rook();
         Chess::Board newBoard = node->board;
         if(!newBoard.setNewPiece(*newRook)){
-            return;
+            return nullptr;
         }
         Node *nodeR = new Node(newRook, newBoard, tempPiecesConfig);
         node->R = nodeR;
-        noCaptureTraverse(node->R);
+        resultBoard = noCaptureTraverse(node->R);
+        if(resultBoard){
+            return resultBoard;
+        }
     }
 
     if(node->piecesConfig[2] > 0){
@@ -257,11 +265,14 @@ void Chess::noCaptureTraverse(Node* node){
         auto *newBishop = new Chess::Bishop();
         Chess::Board newBoard = node->board;
         if(!newBoard.setNewPiece(*newBishop)){
-            return;
+            return nullptr;
         }
         Node *nodeB = new Node(newBishop, newBoard, tempPiecesConfig);
         node->B = nodeB;
-        noCaptureTraverse(node->B);
+        resultBoard = noCaptureTraverse(node->B);
+        if(resultBoard){
+            return resultBoard;
+        }
     }
 
     if(node->piecesConfig[3] > 0){
@@ -270,11 +281,14 @@ void Chess::noCaptureTraverse(Node* node){
         auto *newKnight= new Chess::Knight();
         Chess::Board newBoard = node->board;
         if(!newBoard.setNewPiece(*newKnight)){
-            return;
+            return nullptr;
         }
         Node *nodeN = new Node(newKnight, newBoard, tempPiecesConfig);
         node->N = nodeN;
-        noCaptureTraverse(node->N);
+        resultBoard = noCaptureTraverse(node->N);
+        if(resultBoard){
+            return resultBoard;
+        }
     }
 
     if(node->piecesConfig[4] > 0){
@@ -283,11 +297,14 @@ void Chess::noCaptureTraverse(Node* node){
         auto *newQueen = new Chess::Queen();
         Chess::Board newBoard = node->board;
         if(!newBoard.setNewPiece(*newQueen)){
-            return;
+            return nullptr;
         }
         Node *nodeQ = new Node(newQueen, newBoard, tempPiecesConfig);
         node->Q = nodeQ;
-        noCaptureTraverse(node->Q);
+        resultBoard = noCaptureTraverse(node->Q);
+        if(resultBoard){
+            return resultBoard;
+        }
     }
 
     if(node->piecesConfig[5] > 0){
@@ -296,11 +313,14 @@ void Chess::noCaptureTraverse(Node* node){
         auto *newKing = new Chess::King();
         Chess::Board newBoard = node->board;
         if(!newBoard.setNewPiece(*newKing)){
-            return;
+            return nullptr;
         }
         Node *nodeK = new Node(newKing, newBoard, tempPiecesConfig);
         node->K = nodeK;
-        noCaptureTraverse(node->K);
+        resultBoard = noCaptureTraverse(node->K);
+        if(resultBoard){
+            return resultBoard;
+        }
     }
     delete node;
 }
