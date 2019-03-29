@@ -177,6 +177,33 @@ proi-2.cpp.s:
 	$(MAKE) -f CMakeFiles/proi_project_2.dir/build.make CMakeFiles/proi_project_2.dir/proi-2.cpp.s
 .PHONY : proi-2.cpp.s
 
+shell.o: shell.cpp.o
+
+.PHONY : shell.o
+
+# target to build an object file
+shell.cpp.o:
+	$(MAKE) -f CMakeFiles/proi_project_2.dir/build.make CMakeFiles/proi_project_2.dir/shell.cpp.o
+.PHONY : shell.cpp.o
+
+shell.i: shell.cpp.i
+
+.PHONY : shell.i
+
+# target to preprocess a source file
+shell.cpp.i:
+	$(MAKE) -f CMakeFiles/proi_project_2.dir/build.make CMakeFiles/proi_project_2.dir/shell.cpp.i
+.PHONY : shell.cpp.i
+
+shell.s: shell.cpp.s
+
+.PHONY : shell.s
+
+# target to generate assembly for a file
+shell.cpp.s:
+	$(MAKE) -f CMakeFiles/proi_project_2.dir/build.make CMakeFiles/proi_project_2.dir/shell.cpp.s
+.PHONY : shell.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -192,6 +219,9 @@ help:
 	@echo "... proi-2.o"
 	@echo "... proi-2.i"
 	@echo "... proi-2.s"
+	@echo "... shell.o"
+	@echo "... shell.i"
+	@echo "... shell.s"
 .PHONY : help
 
 

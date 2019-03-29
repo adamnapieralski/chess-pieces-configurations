@@ -10,14 +10,15 @@
 #include <array>
 #include <typeinfo>
 #include "chess.h"
-
+#include "shell.h"
 using namespace std;
-//using namespace Chess;
+//using namespace chess;
 
 int main() {
-    Chess::Board board(1, 1);
+    chess::Board board(1, 1);
     array<int, PIECES_TYPES> pConfig = {1, 0, 0,};
-    Chess::Node* root = new Chess::Node(nullptr, board, pConfig);
+    chess::Node* root = new chess::Node(nullptr, board, pConfig);
+
     auto resultBoard = noCaptureTraverse(root, true);
     if(resultBoard){
         cout << "Przykladowa szachownica o podanej konfiguracji figur:" << endl << endl;

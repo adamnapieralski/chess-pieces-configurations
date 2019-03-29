@@ -93,6 +93,12 @@
 		<Unit filename="/home/napiad/studia/eiti/proi/proi-project-2/proi-2.cpp">
 			<Option target="proi_project_2"/>
 		</Unit>
+		<Unit filename="/home/napiad/studia/eiti/proi/proi-project-2/shell.cpp">
+			<Option target="proi_project_2"/>
+		</Unit>
+		<Unit filename="/home/napiad/studia/eiti/proi/proi-project-2/shell.h">
+			<Option target="proi_project_2"/>
+		</Unit>
 		<Unit filename="/home/napiad/studia/eiti/proi/proi-project-2/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

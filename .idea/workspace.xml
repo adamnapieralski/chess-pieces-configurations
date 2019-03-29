@@ -12,11 +12,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed33bcba-7d13-42a1-99e6-08436bf90cc3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/shell.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shell.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chess.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/chess.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chess.h" beforeDir="false" afterPath="$PROJECT_DIR$/chess.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/proi_project_2.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/proi_project_2.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/proi_project_2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/proi_project_2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/proi_project_2.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/proi_project_2.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/proi_project_2.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/proi_project_2.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/proi_project_2.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/proi_project_2.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/proi_project_2.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/proi_project_2.dir/link.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/proi_project_2.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/proi_project_2.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/proi_project_2.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/proi_project_2.cbp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proi-2.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/proi-2.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -38,7 +48,7 @@
         <entry file="file://$PROJECT_DIR$/proi-2.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
-              <caret line="14" column="24" lean-forward="true" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+              <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
               <folding>
                 <element signature="e#111#130#0" expanded="true" />
               </folding>
@@ -46,11 +56,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/chess.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="566">
-              <caret line="105" column="19" selection-start-line="105" selection-start-column="19" selection-end-line="105" selection-end-column="19" />
+            <state relative-caret-position="165">
+              <caret line="17" column="11" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
               <folding>
                 <element signature="e#183#202#0" expanded="true" />
                 <element signature="e#800#940#1" />
@@ -64,11 +74,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chess.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="252" column="17" selection-start-line="252" selection-start-column="17" selection-end-line="252" selection-end-column="17" />
+            <state relative-caret-position="30">
+              <caret line="2" column="71" selection-start-line="2" selection-start-column="37" selection-end-line="2" selection-end-column="71" />
               <folding>
                 <element signature="e#174#239#0" />
                 <element signature="e#240#321#0" />
@@ -89,6 +99,27 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/shell.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="263">
+              <caret line="24" column="34" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
+              <folding>
+                <element signature="e#197#216#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/shell.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="348">
+              <caret line="112" column="24" selection-start-line="112" selection-start-column="24" selection-end-line="112" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
@@ -96,8 +127,8 @@
       <find>==</find>
       <find>operator</find>
       <find>&lt;&lt;</find>
-      <find>friend</find>
       <find>NEW</find>
+      <find>friend</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -106,17 +137,19 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/chess.h" />
         <option value="$PROJECT_DIR$/proi-2.cpp" />
         <option value="$PROJECT_DIR$/chess.cpp" />
+        <option value="$PROJECT_DIR$/chess.h" />
+        <option value="$PROJECT_DIR$/shell.h" />
+        <option value="$PROJECT_DIR$/shell.cpp" />
       </list>
     </option>
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="4">
     <option name="y" value="25" />
-    <option name="width" value="663" />
-    <option name="height" value="555" />
+    <option name="width" value="910" />
+    <option name="height" value="743" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -178,7 +211,7 @@
       <option name="presentableId" value="Default" />
       <updated>1553510726483</updated>
       <workItem from="1553510728790" duration="14848000" />
-      <workItem from="1553630320722" duration="41713000" />
+      <workItem from="1553630320722" duration="46537000" />
     </task>
     <task id="LOCAL-00001" summary="Added custom library files for chess classes">
       <created>1553511908796</created>
@@ -278,17 +311,24 @@
       <option name="project" value="LOCAL" />
       <updated>1553865864659</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="memory leaks resolved">
+      <created>1553868511379</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1553868511379</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56561000" />
+    <option name="totallyTimeSpent" value="61385000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="25" width="1366" height="743" extended-state="6" />
+    <frame x="0" y="25" width="910" height="743" extended-state="4" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20468278" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.312212" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -328,7 +368,8 @@
     <MESSAGE value="Updates to traversing function" />
     <MESSAGE value="Returning first found correct chessboard" />
     <MESSAGE value="Traverse iterating through children nodes with for loop" />
-    <option name="LAST_COMMIT_MESSAGE" value="Traverse iterating through children nodes with for loop" />
+    <MESSAGE value="memory leaks resolved" />
+    <option name="LAST_COMMIT_MESSAGE" value="memory leaks resolved" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file:///usr/include/c++/7/bits/algorithmfwd.h">
@@ -348,36 +389,10 @@
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/chess.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="566">
-          <caret line="105" column="19" selection-start-line="105" selection-start-column="19" selection-end-line="105" selection-end-column="19" />
-          <folding>
-            <element signature="e#183#202#0" expanded="true" />
-            <element signature="e#800#940#1" />
-            <element signature="e#947#1041#1" />
-            <element signature="e#1048#1144#1" />
-            <element signature="e#1151#1247#1" />
-            <element signature="e#1254#1349#1" />
-            <element signature="e#1356#1450#1" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/proi-2.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="14" column="24" lean-forward="true" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
-          <folding>
-            <element signature="e#111#130#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/chess.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="252" column="17" selection-start-line="252" selection-start-column="17" selection-end-line="252" selection-end-column="17" />
+        <state relative-caret-position="30">
+          <caret line="2" column="71" selection-start-line="2" selection-start-column="37" selection-end-line="2" selection-end-column="71" />
           <folding>
             <element signature="e#174#239#0" />
             <element signature="e#240#321#0" />
@@ -393,6 +408,49 @@
             <element signature="e#3571#3712#0" />
             <element signature="e#5220#5904#0" />
             <element signature="e#5193#5383#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/proi-2.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+          <folding>
+            <element signature="e#111#130#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shell.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="24" column="34" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
+          <folding>
+            <element signature="e#197#216#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shell.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="112" column="24" selection-start-line="112" selection-start-column="24" selection-end-line="112" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chess.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="17" column="11" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
+          <folding>
+            <element signature="e#183#202#0" expanded="true" />
+            <element signature="e#800#940#1" />
+            <element signature="e#947#1041#1" />
+            <element signature="e#1048#1144#1" />
+            <element signature="e#1151#1247#1" />
+            <element signature="e#1254#1349#1" />
+            <element signature="e#1356#1450#1" />
           </folding>
         </state>
       </provider>

@@ -2,7 +2,7 @@
  * Name: chess.h
  * Purpose: Custom library .h file for chess pieces and board classes
  * @author Adam Napieralski
- * @version 0.1 25/03/2019
+ * @version 0.2 29/03/2019
  */
 
 #ifndef CHESS_H
@@ -15,7 +15,7 @@
 
 #define PIECES_TYPES 6
 
-namespace Chess{
+namespace chess{
 
     class Position{
     public:
@@ -86,14 +86,14 @@ namespace Chess{
     public:
         int dimX;
         int dimY;
-        std::vector<Chess::Position> positions;
-        std::vector<Chess::Piece*> pieces;
+        std::vector<chess::Position> positions;
+        std::vector<chess::Piece*> pieces;
         Board();
         Board(int dimX, int dimY);
         Board(Board &board);
 
         bool setNewPiece(Piece &piece);
-        friend std::ostream& operator<<(std::ostream& os, const Chess::Board& board);
+        friend std::ostream& operator<<(std::ostream& os, const chess::Board& board);
     };
 
     class Node{
@@ -104,10 +104,10 @@ namespace Chess{
         std::array<int, PIECES_TYPES> piecesConfig;
 
         //array of pointers to children nodes
-        std::array<Chess::Node*, PIECES_TYPES> piecesNodes;
+        std::array<chess::Node*, PIECES_TYPES> piecesNodes;
 
-        Node(Chess::Piece *pieceN, Board boardN, std::array<int, PIECES_TYPES> piecesConfigN);
-        friend Chess::Board* noCaptureTraverse(Node* node, bool printAll);
+        Node(chess::Piece *pieceN, Board boardN, std::array<int, PIECES_TYPES> piecesConfigN);
+        friend chess::Board* noCaptureTraverse(Node* node, bool printAll);
     };
 }
 

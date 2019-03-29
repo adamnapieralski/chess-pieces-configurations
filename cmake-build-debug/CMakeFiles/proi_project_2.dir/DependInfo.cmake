@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/napiad/studia/eiti/proi/proi-project-2/chess.cpp" "/home/napiad/studia/eiti/proi/proi-project-2/cmake-build-debug/CMakeFiles/proi_project_2.dir/chess.cpp.o"
   "/home/napiad/studia/eiti/proi/proi-project-2/proi-2.cpp" "/home/napiad/studia/eiti/proi/proi-project-2/cmake-build-debug/CMakeFiles/proi_project_2.dir/proi-2.cpp.o"
+  "/home/napiad/studia/eiti/proi/proi-project-2/shell.cpp" "/home/napiad/studia/eiti/proi/proi-project-2/cmake-build-debug/CMakeFiles/proi_project_2.dir/shell.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
