@@ -7,7 +7,6 @@
 #ifndef SHELL_H
 #define SHELL_H
 
-#include <iostream>
 #include "chess.h"
 
 namespace shell{
@@ -28,4 +27,4 @@ namespace shell{
     };
 }
 
-#endif SHELL_H
+#endif //SHELL_H

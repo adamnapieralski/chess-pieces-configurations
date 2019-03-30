@@ -166,7 +166,7 @@ chess::Board::Board(chess::Board &board) {
     this->pieces = board.pieces;
 }
 
-bool chess::Board::setNewPiece(Piece &piece) {
+bool chess::Board::setNewPiece(chess::Piece &piece) {
     //iterate through all chessboard square positions
     for(auto positIt = this->positions.begin(); positIt != this->positions.end(); positIt++){
         //try setting piece in square

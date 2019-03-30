@@ -20,3 +20,21 @@ array
 math.h
 -
 
+/home/napiad/studia/eiti/proi/proi-project-2/proi-2.cpp
+iostream
+-
+array
+-
+chess.h
+/home/napiad/studia/eiti/proi/proi-project-2/chess.h
+shell.h
+/home/napiad/studia/eiti/proi/proi-project-2/shell.h
+
+/home/napiad/studia/eiti/proi/proi-project-2/shell.cpp
+shell.h
+/home/napiad/studia/eiti/proi/proi-project-2/shell.h
+
+/home/napiad/studia/eiti/proi/proi-project-2/shell.h
+chess.h
+/home/napiad/studia/eiti/proi/proi-project-2/chess.h
+

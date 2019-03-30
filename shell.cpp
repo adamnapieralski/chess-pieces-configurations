@@ -7,6 +7,8 @@
 
 #include "shell.h"
 
+using chess::Node;
+
 void shell::Shell::setInputBoard() {
     std::cout << "Podaj wymiary szachownicy (w ilosci pol):" << std::endl;
     int dimX, dimY;
@@ -96,6 +98,11 @@ void shell::Shell::displayDescription() {
 bool shell::Shell::exeMenu() {
     this->displayMainMenu();
     switch(this->getChoice()){
+        case 0:{
+            //chess::Node::board;
+            //noCaptureTraverse(this->inputBoard, this->printAll);
+            //auto resultBoard = chess::Node::noCaptureTraverse(this->inputBoard, this->printAll);
+        }
         case 1:
             this->setInputBoard();
             return true;
