@@ -106,8 +106,8 @@ namespace chess{
         //array of pointers to children nodes
         std::array<chess::Node*, PIECES_TYPES> piecesNodes;
 
-        Node(chess::Piece *pieceN, Board boardN, std::array<int, PIECES_TYPES> piecesConfigN);
-        friend chess::Board* noCaptureTraverse(Node* node, bool printAll);
+        Node(Piece *pieceN, Board boardN, std::array<int, PIECES_TYPES> piecesConfigN);
+        friend Board* noCaptureTraverse(Node* node, bool printAll);
     };
 }
 

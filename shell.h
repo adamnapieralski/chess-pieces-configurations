@@ -4,9 +4,12 @@
  * @author Adam Napieralski
  * @version 0.2 29/03/2019
  */
-#ifndef SHELL_H
-#define SHELL_H
+//#ifndef SHELL_H
+//#define SHELL_H
 
+#include <iostream>
+#include <array>
+#include <vector>
 #include "chess.h"
 
 namespace shell{
@@ -27,4 +30,4 @@ namespace shell{
     };
 }
 
-#endif //SHELL_H
+//#endif //SHELL_H
