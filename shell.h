@@ -15,6 +15,7 @@
 namespace shell{
     class Shell{
     public:
+        Shell();
         chess::Board inputBoard;
         std::array<int, PIECES_TYPES> piecesConfig;
         std::array<std::string, PIECES_TYPES> piecesNames = {"Pionek", "Wieza", "Goniec", "Kon", "Hetman", "Krol"};
@@ -25,6 +26,7 @@ namespace shell{
         void displayMainMenu();
         void displaySettings();
         void displayDescription();
+        void chessConfigSearch(chess::Node* rootNode);
         bool exeMenu();
         int getChoice();
     };

@@ -7,7 +7,15 @@
 
 #include "shell.h"
 
+using namespace chess;
+
 namespace shell{
+
+    Shell::Shell(){
+        this->piecesConfig = {0, };
+        this->printAll = false;
+    }
+
     void Shell::setInputBoard() {
         std::cout << "Podaj wymiary szachownicy (w ilosci pol):" << std::endl;
         int dimX, dimY;
@@ -41,7 +49,7 @@ namespace shell{
 
     void Shell::setPrintAll() {
         std::cout << "Wyswietlac wszystkie mozliwe konfiguracje?" << std::endl;
-        std::cout << "\t0 - Nie\n1 - Tak" << std::endl;
+        std::cout << "\t0 - Nie\n\t1 - Tak" << std::endl;
         int temp;
         while ((!(std::cin >> temp) && (temp != 0 && temp != 1)) || std::cin.peek() != '\n')
         {
@@ -49,6 +57,7 @@ namespace shell{
             std::cin.clear();
             std::cin.ignore();
         }
+        this->printAll = temp;
     }
 
     int Shell::getChoice(){
@@ -63,7 +72,7 @@ namespace shell{
     }
 
     void Shell::displayMainMenu() {
-        std::cout << "MENU\n\n";
+        std::cout << "\nMENU\n\n";
         std::cout << "\t0 - realizuj algorytm\n";
         std::cout << "\t1 - okresl wielkosc szachownicy\n";
         std::cout << "\t2 - okresl ilosc figur\n";
@@ -94,13 +103,26 @@ namespace shell{
         std::cout << "\tK - King - Krol\n" << std::endl;
     }
 
+    void Shell::chessConfigSearch(chess::Node* rootNode){
+        auto resultBoard = noCaptureTraverse(rootNode, this->printAll);
+        if(!this->printAll){
+            if(resultBoard){
+                std::cout << "Przykladowa szachownica o podanej konfiguracji figur:\n\n";
+                std::cout << *resultBoard << std::endl;
+            }
+            else{
+                std::cout << "Brak mozliwosci ustawienia podanej konfiguracji figur na danej szachownicy.\n\n";
+            }
+        }
+    }
+
     bool Shell::exeMenu() {
         this->displayMainMenu();
         switch(this->getChoice()){
             case 0:{
-                //chess::Node::board;
-                //chess::noCaptureTraverse(this->inputBoard, this->printAll);
-                //auto resultBoard = chess::Node::noCaptureTraverse(this->inputBoard, this->printAll);
+                auto rootNode = new Node(nullptr, this->inputBoard, this->piecesConfig);
+                chessConfigSearch(rootNode);
+                return true;
             }
             case 1:
                 this->setInputBoard();
