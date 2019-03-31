@@ -30,22 +30,22 @@ namespace chess{
 
     Piece::Piece(Position posit): position(posit)   {}
 
-    Piece::Piece(chess::Piece &piece): position(piece.position)  {}
+    Piece::Piece(Piece &piece): position(piece.position)  {}
 
     Piece* newPiece(int pieceSym){
         switch(pieceSym){
             case 0:
-                return new chess::Pawn();
+                return new Pawn();
             case 1:
-                return new chess::Rook();
+                return new Rook();
             case 2:
-                return new chess::Bishop();
+                return new Bishop();
             case 3:
-                return new chess::Knight();
+                return new Knight();
             case 4:
-                return new chess::Queen();
+                return new Queen();
             case 5:
-                return new chess::King();
+                return new King();
         }
     }
 
@@ -54,7 +54,7 @@ namespace chess{
         this->position.y = 0;
     }
 
-    bool Pawn::isCaptured(chess::Position square) {
+    bool Pawn::isCaptured(Position square) {
         //delta between figure and square in both axes
         int deltaCol = square.x - this->position.x;
         int deltaRow = square.y - this->position.y;
@@ -69,7 +69,7 @@ namespace chess{
         return 'P';
     }
 
-    bool Rook::isCaptured(chess::Position square) {
+    bool Rook::isCaptured(Position square) {
         //if row or column are the same
         if(square.x == this->position.x || square.y == this->position.y)
             return true;
@@ -81,7 +81,7 @@ namespace chess{
         return 'R';
     }
 
-    bool Bishop::isCaptured(chess::Position square) {
+    bool Bishop::isCaptured(Position square) {
         int deltaCol = square.x - this->position.x;
         int deltaRow = square.y - this->position.y;
         //if square is on diagonal from bishop
@@ -95,7 +95,7 @@ namespace chess{
         return 'B';
     }
 
-    bool Knight::isCaptured(chess::Position square) {
+    bool Knight::isCaptured(Position square) {
         int deltaCol = square.x - this->position.x;
         int deltaRow = square.y - this->position.y;
 
@@ -109,7 +109,7 @@ namespace chess{
         return 'N';
     }
 
-    bool Queen::isCaptured(chess::Position square) {
+    bool Queen::isCaptured(Position square) {
         int deltaCol = square.x - this->position.x;
         int deltaRow = square.y - this->position.y;
 
@@ -122,7 +122,7 @@ namespace chess{
     char Queen::getSymbol() const {
         return 'Q';
     }
-    bool King::isCaptured(chess::Position square) {
+    bool King::isCaptured(Position square) {
         int deltaCol = square.x - this->position.x;
         int deltaRow = square.y - this->position.y;
 
@@ -166,23 +166,23 @@ namespace chess{
         this->pieces.assign(board.pieces.begin(), board.pieces.end());
     }
 
-    bool Board::setNewPiece(Piece &piece) {
+    bool Board::setNewPiece(Piece *piece) {
         //iterate through all chessboard square positions
         for(auto positIt = this->positions.begin(); positIt != this->positions.end(); positIt++){
             //try setting piece in square
-            piece.position = *positIt;
+            piece->position = *positIt;
             //iterate through already set pieces on chessboard and count with how many of them piece doesn't capture each other
             int temp = 0;
             for(auto pieceIt = this->pieces.begin(); pieceIt != this->pieces.end(); pieceIt++){
                 //if they capture each other or are on the same squares
-                if(piece.isCaptured((*pieceIt)->position) || (*pieceIt)->isCaptured(piece.position) || (*pieceIt)->position == piece.position){
+                if(piece->isCaptured((*pieceIt)->position) || (*pieceIt)->isCaptured(piece->position) || (*pieceIt)->position == piece->position){
                     break;
                 }
                 temp++;
             }
             //if piece doesn't capture each other with any of already set pieces
             if(temp == this->pieces.size()){
-                this->pieces.push_back(&piece);
+                this->pieces.push_back(piece);
                 return true;
             }
         }
@@ -222,9 +222,10 @@ namespace chess{
         return *this;
     }
 
-    Node::Node(chess::Piece *pieceN, chess::Board boardN, std::array<int, PIECES_TYPES> piecesConfigN):
-            board(boardN)
+    Node::Node(chess::Piece *pieceN, chess::Board *boardN, std::array<int, PIECES_TYPES> piecesConfigN)
     {
+        auto nodeBoard = new Board(*boardN);
+        this->board = nodeBoard;
         this->piece = pieceN;
         this->piecesConfig = piecesConfigN;
         std::fill(this->piecesNodes.begin(), this->piecesNodes.end(), nullptr);
@@ -234,9 +235,18 @@ namespace chess{
         std::array<int, 6> zeroConfig = {0, };
         //if all pieces were already placed
         if(node->piecesConfig == zeroConfig){
-            std::cout << node->board << std::endl;
+            if(!node->board){
+                std::cout << "Brak mozliwych konfiguracji.\n";
+
+            }
+            else if(!printAll){
+                std::cout << "Przykladowa konfiguracja ustawien figur:\n";
+            }
+
+            std::cout << *node->board << std::endl;
             foundConfig = true;
             delete node->piece;
+            delete node->board;
             delete node;
             return;
         }
@@ -246,30 +256,31 @@ namespace chess{
             if(node->piecesConfig[i] > 0){
                 newPiecesConfig = node->piecesConfig;
                 --newPiecesConfig[i];
-                auto newPiece = chess::newPiece(i);
-                auto newBoard = node->board;
+                auto nPiece = newPiece(i);
+                auto newBoard = new Board(*node->board);
+                //auto newBoard = node->board;
                 //if it's not possible to place a new piece on board
-                if(!newBoard.setNewPiece(*newPiece)){
-                    delete newPiece;
-                    delete node->piece;
+                if(!newBoard->setNewPiece(nPiece)){
+                    delete nPiece;
                     delete node;
                     return;
                 }
-                auto newNode = new Node(newPiece, newBoard, newPiecesConfig);
+                auto newNode = new Node(nPiece, newBoard, newPiecesConfig);
                 node->piecesNodes[i] = newNode;
                 noCaptureTraverse(node->piecesNodes[i], foundConfig, printAll);
-                if(foundConfig){
-                    //if(!printAll){
-                        delete newPiece;
-                        delete node->piece;
-                        delete node;
-                        return;
-                    //}
+                if(!printAll && foundConfig){
+                    delete node->piece;
+                    delete node->board;
+                    delete node;
+                    return;
                 }
             }
         }
-        delete node->piece;
-        delete node;
+        if(printAll){
+            delete node->piece;
+            delete node->board;
+            delete node;
+        }
     }
 }
 

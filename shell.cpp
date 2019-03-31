@@ -123,7 +123,7 @@ namespace shell{
         this->displayMainMenu();
         switch(this->getChoice()){
             case 0:{
-                auto rootNode = new Node(nullptr, *this->inputBoard, this->piecesConfig);
+                auto rootNode = new Node(nullptr, this->inputBoard, this->piecesConfig);
                 chessConfigSearch(rootNode);
                 return true;
             }
