@@ -16,7 +16,7 @@ namespace shell{
     class Shell{
     public:
         Shell();
-        chess::Board inputBoard;
+        chess::Board* inputBoard;
         std::array<int, PIECES_TYPES> piecesConfig;
         std::array<std::string, PIECES_TYPES> piecesNames = {"Pionek", "Wieza", "Goniec", "Kon", "Hetman", "Krol"};
         bool printAll;

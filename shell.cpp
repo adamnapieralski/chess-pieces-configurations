@@ -11,7 +11,7 @@ using namespace chess;
 
 namespace shell{
 
-    Shell::Shell(){
+    Shell::Shell(): inputBoard() {
         this->piecesConfig = {0, };
         this->printAll = false;
     }
@@ -19,26 +19,27 @@ namespace shell{
     void Shell::setInputBoard() {
         std::cout << "Podaj wymiary szachownicy (w ilosci pol):" << std::endl;
         int dimX, dimY;
-        while ((std::cout << "\tw poziomie" << std::endl && !(std::cin >> dimX)) || std::cin.peek() != '\n')
+        while ((std::cout << "\tw poziomie " && !(std::cin >> dimX)) || std::cin.peek() != '\n')
         {
             std::cout << "Niepoprawne dane. Wprowadz ponownie." << std::endl;
             std::cin.clear();
             std::cin.ignore();
         }
-        while ((std::cout << "\tw pionie" << std::endl && !(std::cin >> dimY)) || std::cin.peek() != '\n')
+        while ((std::cout << "\tw pionie " && !(std::cin >> dimY)) || std::cin.peek() != '\n')
         {
             std::cout << "Niepoprawne dane. Wprowadz ponownie." << std::endl;
             std::cin.clear();
             std::cin.ignore();
         }
-        chess::Board inputBoard(dimX, dimY);
-        this->inputBoard = inputBoard;
+        delete this->inputBoard;
+        auto inBoard = new Board(dimX, dimY);
+        this->inputBoard = inBoard;
     }
 
     void Shell::setPiecesConfig() {
         std::cout << "Podaj ilosc figur" << std::endl;
         for(int i = 0; i < PIECES_TYPES; ++i){
-            while ((std::cout << "\t" << this->piecesNames[i] << std::endl && !(std::cin >> this->piecesConfig[i])) || std::cin.peek() != '\n')
+            while ((std::cout << "\t" << this->piecesNames[i] << " "  && !(std::cin >> this->piecesConfig[i])) || std::cin.peek() != '\n')
             {
                 std::cout << "Niepoprawne dane. Wprowadz ponownie." << std::endl;
                 std::cin.clear();
@@ -84,8 +85,8 @@ namespace shell{
 
     void Shell::displaySettings() {
         std::cout << "Wielkosc szachownicy:\n";
-        std::cout << "\tw poziomie:\t" << this->inputBoard.dimX << std::endl;
-        std::cout << "\tw pionie:\t" << this->inputBoard.dimY << std::endl << std::endl;
+        std::cout << "\tw poziomie:\t" << this->inputBoard->dimX << std::endl;
+        std::cout << "\tw pionie:\t" << this->inputBoard->dimY << std::endl << std::endl;
         std::cout << "Figury:\n";
         for(int i = 0; i < PIECES_TYPES; ++i){
             std::cout << "\t" << this->piecesNames[i] << ":\t" << this->piecesConfig[i] << std::endl;
@@ -104,23 +105,25 @@ namespace shell{
     }
 
     void Shell::chessConfigSearch(chess::Node* rootNode){
-        auto resultBoard = noCaptureTraverse(rootNode, this->printAll);
-        if(!this->printAll){
-            if(resultBoard){
-                std::cout << "Przykladowa szachownica o podanej konfiguracji figur:\n\n";
-                std::cout << *resultBoard << std::endl;
-            }
-            else{
-                std::cout << "Brak mozliwosci ustawienia podanej konfiguracji figur na danej szachownicy.\n\n";
-            }
-        }
+        chess::Board resultBoard;
+        bool foundConfig = false;
+        noCaptureTraverse(rootNode, foundConfig, this->printAll);
+//        if(!this->printAll){
+//            if(&resultBoard){
+//                std::cout << "Przykladowa szachownica o podanej konfiguracji figur:\n\n";
+//                //std::cout << resultBoard << std::endl;
+//            }
+//            else{
+//                std::cout << "Brak mozliwosci ustawienia podanej konfiguracji figur na danej szachownicy.\n\n";
+//            }
+//        }
     }
 
     bool Shell::exeMenu() {
         this->displayMainMenu();
         switch(this->getChoice()){
             case 0:{
-                auto rootNode = new Node(nullptr, this->inputBoard, this->piecesConfig);
+                auto rootNode = new Node(nullptr, *this->inputBoard, this->piecesConfig);
                 chessConfigSearch(rootNode);
                 return true;
             }

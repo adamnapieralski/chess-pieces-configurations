@@ -142,6 +142,11 @@ namespace chess{
         this->positions.clear();
     }
 
+    Board::~Board() {
+        this->pieces.clear();
+        this->positions.clear();
+    }
+
     Board::Board(int dimX, int dimY) {
         this->dimX = dimX;
         this->dimY = dimY;
@@ -158,7 +163,7 @@ namespace chess{
         this->dimX = board.dimX;
         this->dimY = board.dimY;
         this->positions = board.positions;
-        this->pieces = board.pieces;
+        this->pieces.assign(board.pieces.begin(), board.pieces.end());
     }
 
     bool Board::setNewPiece(Piece &piece) {
@@ -188,7 +193,7 @@ namespace chess{
     std::ostream& operator<<(std::ostream& os, const chess::Board& board) {
         for(int i = 0; i < board.dimY; i++){
             for(int j = 0; j < board.dimX; j++){
-                chess::Position *pTemp = new chess::Position(j, i);
+                Position *pTemp = new Position(j, i);
                 bool isPiece = false;
                 for(auto pieceIt = board.pieces.begin(); pieceIt != board.pieces.end(); pieceIt++){
                     if(*pTemp == (*pieceIt)->position){
@@ -207,22 +212,35 @@ namespace chess{
         return os;
     }
 
+    Board& Board::operator=(const Board& newBoard){
+      if(this != &newBoard){
+          this->pieces = newBoard.pieces;
+          this->dimX = newBoard.dimX;
+          this->dimY = newBoard.dimY;
+          this->positions = newBoard.positions;
+      }
+        return *this;
+    }
+
     Node::Node(chess::Piece *pieceN, chess::Board boardN, std::array<int, PIECES_TYPES> piecesConfigN):
             board(boardN)
     {
         this->piece = pieceN;
         this->piecesConfig = piecesConfigN;
+        std::fill(this->piecesNodes.begin(), this->piecesNodes.end(), nullptr);
     }
 
-    Board* noCaptureTraverse(Node* node, bool printAll){
+    void noCaptureTraverse(Node* node, bool &foundConfig, bool printAll){
         std::array<int, 6> zeroConfig = {0, };
+        //if all pieces were already placed
         if(node->piecesConfig == zeroConfig){
             std::cout << node->board << std::endl;
+            foundConfig = true;
             delete node->piece;
             delete node;
-            return &node->board;
+            return;
         }
-        chess::Board* resultBoard;
+        //Board* resultBoard;
         std::array<int, PIECES_TYPES> newPiecesConfig;
         for(int i = 0; i < PIECES_TYPES; ++i){
             if(node->piecesConfig[i] > 0){
@@ -230,22 +248,23 @@ namespace chess{
                 --newPiecesConfig[i];
                 auto newPiece = chess::newPiece(i);
                 auto newBoard = node->board;
+                //if it's not possible to place a new piece on board
                 if(!newBoard.setNewPiece(*newPiece)){
                     delete newPiece;
                     delete node->piece;
                     delete node;
-                    return nullptr;
+                    return;
                 }
                 auto newNode = new Node(newPiece, newBoard, newPiecesConfig);
                 node->piecesNodes[i] = newNode;
-                resultBoard = noCaptureTraverse(node->piecesNodes[i], printAll);
-                if(resultBoard){
-                    if(!printAll){
+                noCaptureTraverse(node->piecesNodes[i], foundConfig, printAll);
+                if(foundConfig){
+                    //if(!printAll){
                         delete newPiece;
                         delete node->piece;
                         delete node;
-                        return resultBoard;
-                    }
+                        return;
+                    //}
                 }
             }
         }

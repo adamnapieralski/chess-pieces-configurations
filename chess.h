@@ -89,11 +89,13 @@ namespace chess{
         std::vector<chess::Position> positions;
         std::vector<chess::Piece*> pieces;
         Board();
+        ~Board();
         Board(int dimX, int dimY);
         Board(Board &board);
 
         bool setNewPiece(Piece &piece);
         friend std::ostream& operator<<(std::ostream& os, const chess::Board& board);
+        Board& operator=(const Board& newBoard);
     };
 
     class Node{
@@ -107,7 +109,7 @@ namespace chess{
         std::array<chess::Node*, PIECES_TYPES> piecesNodes;
 
         Node(Piece *pieceN, Board boardN, std::array<int, PIECES_TYPES> piecesConfigN);
-        friend Board* noCaptureTraverse(Node* node, bool printAll);
+        friend void noCaptureTraverse(Node* node, bool &foundConfig, bool printAll);
     };
 
     //Board* noCaptureTraverse(Node* node, bool printAll);
