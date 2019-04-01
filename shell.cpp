@@ -11,9 +11,14 @@ using namespace chess;
 
 namespace shell{
 
-    Shell::Shell(): inputBoard() {
+    Shell::Shell(){
         this->piecesConfig = {0, };
         this->printAll = false;
+        this->inputBoard = new Board();
+    }
+
+    Shell::~Shell() {
+        delete this->inputBoard;
     }
 
     void Shell::setInputBoard() {
@@ -23,17 +28,18 @@ namespace shell{
         {
             std::cout << "Niepoprawne dane. Wprowadz ponownie." << std::endl;
             std::cin.clear();
-            std::cin.ignore(INT_FAST16_MAX, '\n');
+            std::cin.ignore(INT8_MAX, '\n');
         }
         while ((std::cout << "\tw pionie " && !(std::cin >> dimY)) || dimY < 1 || std::cin.peek() != '\n')
         {
             std::cout << "Niepoprawne dane. Wprowadz ponownie." << std::endl;
             std::cin.clear();
-            std::cin.ignore(INT_FAST16_MAX, '\n');
+            std::cin.ignore(INT8_MAX, '\n');
         }
         delete this->inputBoard;
         auto inBoard = new Board(dimX, dimY);
         this->inputBoard = inBoard;
+        std::cout << *this->inputBoard << '\n';
     }
 
     void Shell::setPiecesConfig() {
@@ -43,20 +49,20 @@ namespace shell{
             {
                 std::cout << "Niepoprawne dane. Wprowadz ponownie." << std::endl;
                 std::cin.clear();
-                std::cin.ignore(INT_FAST16_MAX, '\n');
+                std::cin.ignore(INT8_MAX, '\n');
             }
         }
     }
 
     void Shell::setPrintAll() {
-        std::cout << "Wyswietlac wszystkie mozliwe konfiguracje?" << std::endl;
-        std::cout << "\t0 - Nie\n\t1 - Tak" << std::endl;
+        std::cout << "Wyswietlac wszystkie znalezione konfiguracje?" << std::endl;
+        std::cout << "\t0 - Nie, wyswietl tylko jedna przykladowa\n\t1 - Tak, wyswietl wszystkie znalezione" << std::endl;
         int temp;
         while ((!(std::cin >> temp) || (temp != 0 && temp != 1)) || std::cin.peek() != '\n')
         {
             std::cout << "Niepoprawne dane. Wprowadz ponownie." << std::endl;
             std::cin.clear();
-            std::cin.ignore();
+            std::cin.ignore(INT8_MAX);
         }
         this->printAll = temp;
     }
@@ -110,18 +116,11 @@ namespace shell{
     }
 
     void Shell::chessConfigSearch(chess::Node* rootNode){
-        chess::Board resultBoard;
         bool foundConfig = false;
         noCaptureTraverse(rootNode, foundConfig, this->printAll);
-//        if(!this->printAll){
-//            if(&resultBoard){
-//                std::cout << "Przykladowa szachownica o podanej konfiguracji figur:\n\n";
-//                //std::cout << resultBoard << std::endl;
-//            }
-//            else{
-//                std::cout << "Brak mozliwosci ustawienia podanej konfiguracji figur na danej szachownicy.\n\n";
-//            }
-//        }
+        if(!foundConfig){
+            std::cout << "Brak mozliwych konfiguracji\n";
+        }
     }
 
     bool Shell::exeMenu() {
@@ -148,6 +147,7 @@ namespace shell{
                 this->displayDescription();
                 return true;
             case 6:
+                std::cout << "\nWYJSCIE\n";
                 return false;
             default:
                 std::cout << "Niepoprawne polecenie. Sprobuj ponownie.\n\n";

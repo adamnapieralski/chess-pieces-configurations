@@ -20,6 +20,7 @@ namespace shell{
         std::array<std::string, PIECES_TYPES> piecesNames = {"Pionek", "Wieza", "Goniec", "Kon", "Hetman", "Krol"};
         bool printAll;
         Shell();
+        ~Shell();
         void setInputBoard();
         void setPiecesConfig();
         void setPrintAll();

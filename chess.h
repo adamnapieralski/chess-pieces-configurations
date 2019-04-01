@@ -109,10 +109,9 @@ namespace chess{
         std::array<chess::Node*, PIECES_TYPES> piecesNodes;
 
         Node(Piece *pieceN, Board *boardN, std::array<int, PIECES_TYPES> piecesConfigN);
+        ~Node();
         friend void noCaptureTraverse(Node* node, bool &foundConfig, bool printAll);
     };
-
-    //Board* noCaptureTraverse(Node* node, bool printAll);
 }
 
 #endif //CHESS_H

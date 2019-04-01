@@ -6,10 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/napiad/studia/eiti/proi/proi-project-2/chess.cpp
-chess.h
-/home/napiad/studia/eiti/proi/proi-project-2/chess.h
-
 /home/napiad/studia/eiti/proi/proi-project-2/chess.h
 iostream
 -
@@ -19,4 +15,18 @@ array
 -
 math.h
 -
+
+/home/napiad/studia/eiti/proi/proi-project-2/shell.cpp
+shell.h
+/home/napiad/studia/eiti/proi/proi-project-2/shell.h
+
+/home/napiad/studia/eiti/proi/proi-project-2/shell.h
+iostream
+-
+array
+-
+vector
+-
+chess.h
+/home/napiad/studia/eiti/proi/proi-project-2/chess.h
 

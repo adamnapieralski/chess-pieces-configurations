@@ -163,7 +163,7 @@ namespace chess{
         this->dimX = board.dimX;
         this->dimY = board.dimY;
         this->positions = board.positions;
-        this->pieces.assign(board.pieces.begin(), board.pieces.end());
+        this->pieces = board.pieces;
     }
 
     bool Board::setNewPiece(Piece *piece) {
@@ -231,65 +231,58 @@ namespace chess{
         std::fill(this->piecesNodes.begin(), this->piecesNodes.end(), nullptr);
     }
 
+    Node::~Node(){
+        delete this->piece;
+        delete this->board;
+    }
+
     void noCaptureTraverse(Node* node, bool &foundConfig, bool printAll){
+        //create array zero config values to compare
         std::array<int, 6> zeroConfig = {0, };
         //if all pieces were already placed
         if(node->piecesConfig == zeroConfig){
-            if(!node->board){
-                std::cout << "Brak mozliwych konfiguracji.\n";
-
-            }
-            else if(!printAll){
+            //if program should find and print only one configuration
+            if(!printAll){
                 std::cout << "Przykladowa konfiguracja ustawien figur:\n";
             }
-
             std::cout << *node->board << std::endl;
             foundConfig = true;
-            delete node->piece;
-            delete node->board;
             delete node;
             return;
         }
-        //Board* resultBoard;
-        std::array<int, PIECES_TYPES> newPiecesConfig;
+        std::array<int, PIECES_TYPES> newPiecesConfig = {0, };
+        //for every piece type
         for(int i = 0; i < PIECES_TYPES; ++i){
+            //check if it should be placed
             if(node->piecesConfig[i] > 0){
                 newPiecesConfig = node->piecesConfig;
                 --newPiecesConfig[i];
+                //create new objects for child node
                 auto nPiece = newPiece(i);
-                auto newBoard = new Board(*node->board);
-                //auto newBoard = node->board;
-                //if it's not possible to place a new piece on board
-                if(!newBoard->setNewPiece(nPiece)){
+                auto newBoard = *node->board;
+                //try and if it's not possible to place a new piece on board
+                if(!newBoard.setNewPiece(nPiece)){
                     delete nPiece;
                     delete node;
                     return;
                 }
-                auto newNode = new Node(nPiece, newBoard, newPiecesConfig);
+                //create new node
+                auto newNode = new Node(nPiece, &newBoard, newPiecesConfig);
+                //make it child of current node
                 node->piecesNodes[i] = newNode;
+                //execute the same algorithm for child node
                 noCaptureTraverse(node->piecesNodes[i], foundConfig, printAll);
+                //if for children nodes solution wasnt found and we dont want to check any more
                 if(!printAll && foundConfig){
-                    delete node->piece;
-                    delete node->board;
                     delete node;
                     return;
                 }
             }
         }
+        //if we wanted to print all after checking all children nodes
         if(printAll){
-            delete node->piece;
-            delete node->board;
             delete node;
         }
     }
 }
-
-
-
-
-
-//chess::Position::Position(chess::Position &posit) {
-//    this->x = posit.x;
-//    this->y = posit.y;
-//}
 
