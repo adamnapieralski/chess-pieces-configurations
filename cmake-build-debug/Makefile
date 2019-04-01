@@ -150,32 +150,32 @@ chess.cpp.s:
 	$(MAKE) -f CMakeFiles/proi_project_2.dir/build.make CMakeFiles/proi_project_2.dir/chess.cpp.s
 .PHONY : chess.cpp.s
 
-proi-2.o: proi-2.cpp.o
+main.o: main.cpp.o
 
-.PHONY : proi-2.o
+.PHONY : main.o
 
 # target to build an object file
-proi-2.cpp.o:
-	$(MAKE) -f CMakeFiles/proi_project_2.dir/build.make CMakeFiles/proi_project_2.dir/proi-2.cpp.o
-.PHONY : proi-2.cpp.o
+main.cpp.o:
+	$(MAKE) -f CMakeFiles/proi_project_2.dir/build.make CMakeFiles/proi_project_2.dir/main.cpp.o
+.PHONY : main.cpp.o
 
-proi-2.i: proi-2.cpp.i
+main.i: main.cpp.i
 
-.PHONY : proi-2.i
+.PHONY : main.i
 
 # target to preprocess a source file
-proi-2.cpp.i:
-	$(MAKE) -f CMakeFiles/proi_project_2.dir/build.make CMakeFiles/proi_project_2.dir/proi-2.cpp.i
-.PHONY : proi-2.cpp.i
+main.cpp.i:
+	$(MAKE) -f CMakeFiles/proi_project_2.dir/build.make CMakeFiles/proi_project_2.dir/main.cpp.i
+.PHONY : main.cpp.i
 
-proi-2.s: proi-2.cpp.s
+main.s: main.cpp.s
 
-.PHONY : proi-2.s
+.PHONY : main.s
 
 # target to generate assembly for a file
-proi-2.cpp.s:
-	$(MAKE) -f CMakeFiles/proi_project_2.dir/build.make CMakeFiles/proi_project_2.dir/proi-2.cpp.s
-.PHONY : proi-2.cpp.s
+main.cpp.s:
+	$(MAKE) -f CMakeFiles/proi_project_2.dir/build.make CMakeFiles/proi_project_2.dir/main.cpp.s
+.PHONY : main.cpp.s
 
 shell.o: shell.cpp.o
 
@@ -216,9 +216,9 @@ help:
 	@echo "... chess.o"
 	@echo "... chess.i"
 	@echo "... chess.s"
-	@echo "... proi-2.o"
-	@echo "... proi-2.i"
-	@echo "... proi-2.s"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
 	@echo "... shell.o"
 	@echo "... shell.i"
 	@echo "... shell.s"

@@ -34,7 +34,6 @@ namespace chess{
         Position position;
 
         Piece();
-        Piece(Position posit);
         Piece(Piece &piece);
         // virtual void setCaptureSquares() = 0;
         virtual bool isCaptured(Position square) = 0;

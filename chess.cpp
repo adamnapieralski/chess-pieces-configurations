@@ -28,8 +28,6 @@ namespace chess{
         this->position.y = 0;
     }
 
-    Piece::Piece(Position posit): position(posit)   {}
-
     Piece::Piece(Piece &piece): position(piece.position)  {}
 
     Piece* newPiece(int pieceSym){
