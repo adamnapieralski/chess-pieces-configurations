@@ -18,18 +18,18 @@ namespace shell{
 
     void Shell::setInputBoard() {
         std::cout << "Podaj wymiary szachownicy (w ilosci pol):" << std::endl;
-        int dimX, dimY;
-        while ((std::cout << "\tw poziomie " && !(std::cin >> dimX)) || std::cin.peek() != '\n')
+        int dimX=-1, dimY=-1;
+        while ((std::cout << "\tw poziomie " && !(std::cin >> dimX)) || dimX < 1 || std::cin.peek() != '\n')
         {
             std::cout << "Niepoprawne dane. Wprowadz ponownie." << std::endl;
             std::cin.clear();
-            std::cin.ignore();
+            std::cin.ignore(INT_FAST16_MAX, '\n');
         }
-        while ((std::cout << "\tw pionie " && !(std::cin >> dimY)) || std::cin.peek() != '\n')
+        while ((std::cout << "\tw pionie " && !(std::cin >> dimY)) || dimY < 1 || std::cin.peek() != '\n')
         {
             std::cout << "Niepoprawne dane. Wprowadz ponownie." << std::endl;
             std::cin.clear();
-            std::cin.ignore();
+            std::cin.ignore(INT_FAST16_MAX, '\n');
         }
         delete this->inputBoard;
         auto inBoard = new Board(dimX, dimY);
@@ -39,11 +39,11 @@ namespace shell{
     void Shell::setPiecesConfig() {
         std::cout << "Podaj ilosc figur" << std::endl;
         for(int i = 0; i < PIECES_TYPES; ++i){
-            while ((std::cout << "\t" << this->piecesNames[i] << " "  && !(std::cin >> this->piecesConfig[i])) || std::cin.peek() != '\n')
+            while ((std::cout << "\t" << this->piecesNames[i] << " "  && !(std::cin >> this->piecesConfig[i]) && this->piecesConfig[i] < 0) || std::cin.peek() != '\n')
             {
                 std::cout << "Niepoprawne dane. Wprowadz ponownie." << std::endl;
                 std::cin.clear();
-                std::cin.ignore();
+                std::cin.ignore(INT_FAST16_MAX, '\n');
             }
         }
     }
@@ -52,7 +52,7 @@ namespace shell{
         std::cout << "Wyswietlac wszystkie mozliwe konfiguracje?" << std::endl;
         std::cout << "\t0 - Nie\n\t1 - Tak" << std::endl;
         int temp;
-        while ((!(std::cin >> temp) && (temp != 0 && temp != 1)) || std::cin.peek() != '\n')
+        while ((!(std::cin >> temp) || (temp != 0 && temp != 1)) || std::cin.peek() != '\n')
         {
             std::cout << "Niepoprawne dane. Wprowadz ponownie." << std::endl;
             std::cin.clear();
@@ -72,6 +72,11 @@ namespace shell{
         return choice;
     }
 
+    void Shell::displayWelcomeScreen() {
+        std::cout << "Witaj!\n\n";
+        std::cout << "Program pozwala zbadac mozliwosc ustawienia dowolnego zbioru figur szachowych ";
+        std::cout << "na szachownicy o dowolnej wielkosci tak, aby zadna z figur nie \"bila\" innej.\n\n";
+    }
     void Shell::displayMainMenu() {
         std::cout << "\nMENU\n\n";
         std::cout << "\t0 - realizuj algorytm\n";

@@ -23,6 +23,7 @@ namespace shell{
         void setInputBoard();
         void setPiecesConfig();
         void setPrintAll();
+        void displayWelcomeScreen();
         void displayMainMenu();
         void displaySettings();
         void displayDescription();

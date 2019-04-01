@@ -12,6 +12,7 @@
 
 int main() {
     shell:: Shell shell;
+    shell.displayWelcomeScreen();
     while(shell.exeMenu()){ }
 
     return 0;
