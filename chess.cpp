@@ -165,28 +165,51 @@ namespace chess{
         this->pieces = board.pieces;
     }
 
-    bool Board::setNewPiece(Piece *piece) {
-        //iterate through all chessboard square positions
-        for(auto positIt = this->positions.begin(); positIt != this->positions.end(); positIt++){
-            //try setting piece in square
-            piece->position = *positIt;
-            //iterate through already set pieces on chessboard and count with how many of them piece doesn't capture each other
-            int temp = 0;
-            for(auto pieceIt = this->pieces.begin(); pieceIt != this->pieces.end(); pieceIt++){
-                //if they capture each other or are on the same squares
-                if(piece->isCaptured((*pieceIt)->position) || (*pieceIt)->isCaptured(piece->position) || (*pieceIt)->position == piece->position){
-                    break;
-                }
-                temp++;
+//    bool Board::setNewPiece(Piece *piece, int startPosit) {
+//        //iterate through all chessboard square positions
+//        for(auto positIt = this->positions.begin() + startPosit; positIt != this->positions.end(); positIt++){
+//            //try setting piece in square
+//            piece->position = *positIt;
+//            //iterate through already set pieces on chessboard and count with how many of them piece doesn't capture each other
+//            int temp = 0;
+//            for(auto pieceIt = this->pieces.begin(); pieceIt != this->pieces.end(); pieceIt++){
+//                //if they capture each other or are on the same squares
+//                if(piece->isCaptured((*pieceIt)->position) || (*pieceIt)->isCaptured(piece->position) || (*pieceIt)->position == piece->position){
+//                    break;
+//                }
+//                temp++;
+//            }
+//            //if piece doesn't capture each other with any of already set pieces
+//            if(temp == this->pieces.size()){
+//                this->pieces.push_back(piece);
+//                return true;
+//            }
+//        }
+//        //no place to put new piece
+//        return false;
+//    }
+
+    bool Board::setNewPiece(chess::Piece *piece, int startPosit) {
+        piece->position = this->positions[startPosit];
+        int temp = 0;
+        for(auto pieceIt = this->pieces.begin(); pieceIt != this->pieces.end(); pieceIt++){
+            //if they capture each other or are on the same squares
+            if(piece->isCaptured((*pieceIt)->position) || (*pieceIt)->isCaptured(piece->position) || (*pieceIt)->position == piece->position){
+                break;
             }
-            //if piece doesn't capture each other with any of already set pieces
-            if(temp == this->pieces.size()){
-                this->pieces.push_back(piece);
-                return true;
-            }
+            temp++;
+        }
+        //if piece doesn't capture each other with any of already set pieces
+        if(temp == this->pieces.size()){
+            this->pieces.push_back(piece);
+            return true;
         }
         //no place to put new piece
         return false;
+    }
+
+    int Board::getSquareAmount() {
+        return this->dimX * this->dimY;
     }
 
     std::ostream& operator<<(std::ostream& os, const chess::Board& board) {
@@ -221,13 +244,14 @@ namespace chess{
         return *this;
     }
 
-    Node::Node(chess::Piece *pieceN, chess::Board *boardN, std::array<int, PIECES_TYPES> piecesConfigN)
+    Node::Node(chess::Piece *pieceN, chess::Board *boardN, std::array<int, PIECES_TYPES> piecesConfigN, int startPosit)
     {
         auto nodeBoard = new Board(*boardN);
         this->board = nodeBoard;
         this->piece = pieceN;
         this->piecesConfig = piecesConfigN;
         std::fill(this->piecesNodes.begin(), this->piecesNodes.end(), nullptr);
+        this->startPosit = startPosit;
     }
 
     Node::~Node(){
@@ -252,29 +276,33 @@ namespace chess{
         std::array<int, PIECES_TYPES> newPiecesConfig = {0, };
         //for every piece type
         for(int i = 0; i < PIECES_TYPES; ++i){
-            //check if it should be placed
-            if(node->piecesConfig[i] > 0){
-                newPiecesConfig = node->piecesConfig;
-                --newPiecesConfig[i];
-                //create new objects for child node
-                auto nPiece = newPiece(i);
-                auto newBoard = *node->board;
-                //try and if it's not possible to place a new piece on board
-                if(!newBoard.setNewPiece(nPiece)){
-                    delete nPiece;
-                    delete node;
-                    return;
-                }
-                //create new node
-                auto newNode = new Node(nPiece, &newBoard, newPiecesConfig);
-                //make it child of current node
-                node->piecesNodes[i] = newNode;
-                //execute the same algorithm for child node
-                noCaptureTraverse(node->piecesNodes[i], foundConfig, printAll);
-                //if for children nodes solution wasnt found and we dont want to check any more
-                if(!printAll && foundConfig){
-                    delete node;
-                    return;
+            for(int j = node->startPosit; j < node->board->dimX * node->board->dimY + node->startPosit - std::accumulate(node->piecesConfig.begin(), node->piecesConfig.end(), 0) + 1; j++) {
+                //check if it should be placed
+                if (node->piecesConfig[i] > 0) {
+                    newPiecesConfig = node->piecesConfig;
+                    --newPiecesConfig[i];
+                    //create new objects for child node
+                    auto nPiece = newPiece(i);
+                    auto newBoard = *node->board;
+                    //try and if it's not possible to place a new piece on board
+                    if (!newBoard.setNewPiece(nPiece, j)) {
+                        delete nPiece;
+                        delete node;
+                        continue;
+                    }
+                    int newStartPosit = j;
+                    ++newStartPosit;
+                    //create new node
+                    auto newNode = new Node(nPiece, &newBoard, newPiecesConfig, newStartPosit);
+                    //make it child of current node
+                    node->piecesNodes[i] = newNode;
+                    //execute the same algorithm for child node
+                    noCaptureTraverse(node->piecesNodes[i], foundConfig, printAll);
+                    //if for children nodes solution wasnt found and we dont want to check any more
+                    if (!printAll && foundConfig) {
+                        delete node;
+                        return;
+                    }
                 }
             }
         }

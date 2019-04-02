@@ -11,6 +11,7 @@
 #include <iostream>
 #include <vector>
 #include <array>
+#include <numeric>
 #include <math.h>
 
 #define PIECES_TYPES 6
@@ -92,7 +93,8 @@ namespace chess{
         Board(int dimX, int dimY);
         Board(Board &board);
 
-        bool setNewPiece(Piece *piece);
+        bool setNewPiece(Piece *piece, int startPosit);
+        int getSquareAmount();
         friend std::ostream& operator<<(std::ostream& os, const chess::Board& board);
         Board& operator=(const Board& newBoard);
     };
@@ -101,13 +103,14 @@ namespace chess{
     public:
         Piece *piece;
         Board *board;
+        int startPosit;
         //array with remaining number of occurences for each piece
         std::array<int, PIECES_TYPES> piecesConfig;
 
         //array of pointers to children nodes
         std::array<chess::Node*, PIECES_TYPES> piecesNodes;
 
-        Node(Piece *pieceN, Board *boardN, std::array<int, PIECES_TYPES> piecesConfigN);
+        Node(Piece *pieceN, Board *boardN, std::array<int, PIECES_TYPES> piecesConfigN, int startPosit);
         ~Node();
         friend void noCaptureTraverse(Node* node, bool &foundConfig, bool printAll);
     };
