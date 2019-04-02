@@ -62,7 +62,7 @@ namespace shell{
         {
             std::cout << "Niepoprawne dane. Wprowadz ponownie." << std::endl;
             std::cin.clear();
-            std::cin.ignore(INT8_MAX);
+            std::cin.ignore(INT8_MAX, '\n');
         }
         this->printAll = temp;
     }
@@ -73,7 +73,7 @@ namespace shell{
         {
             std::cout << "Niepoprawne dane. Wprowadz ponownie." << std::endl;
             std::cin.clear();
-            std::cin.ignore();
+            std::cin.ignore(INT8_MAX, '\n');
         }
         return choice;
     }

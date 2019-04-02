@@ -194,10 +194,16 @@ namespace chess{
         int temp = 0;
         for(auto pieceIt = this->pieces.begin(); pieceIt != this->pieces.end(); pieceIt++){
             //if they capture each other or are on the same squares
-            if(piece->isCaptured((*pieceIt)->position) || (*pieceIt)->isCaptured(piece->position) || (*pieceIt)->position == piece->position){
+            auto itPosit = (*pieceIt)->position;
+            if((*pieceIt)->isCaptured(piece->position))
+                break;
+            if(itPosit == piece->position)
+                break;
+            if(piece->isCaptured(itPosit)){ //|| (*pieceIt)->isCaptured(piece->position) || (*pieceIt)->position == piece->position){
                 break;
             }
-            temp++;
+
+            ++temp;
         }
         //if piece doesn't capture each other with any of already set pieces
         if(temp == this->pieces.size()){
@@ -262,8 +268,9 @@ namespace chess{
     void noCaptureTraverse(Node* node, bool &foundConfig, bool printAll){
         //create array zero config values to compare
         std::array<int, 6> zeroConfig = {0, };
+        int leftPieces = std::accumulate(node->piecesConfig.begin(), node->piecesConfig.end(), 0);
         //if all pieces were already placed
-        if(node->piecesConfig == zeroConfig){
+        if(leftPieces == 0){
             //if program should find and print only one configuration
             if(!printAll){
                 std::cout << "Przykladowa konfiguracja ustawien figur:\n";
@@ -276,18 +283,17 @@ namespace chess{
         std::array<int, PIECES_TYPES> newPiecesConfig = {0, };
         //for every piece type
         for(int i = 0; i < PIECES_TYPES; ++i){
-            for(int j = node->startPosit; j < node->board->dimX * node->board->dimY + node->startPosit - std::accumulate(node->piecesConfig.begin(), node->piecesConfig.end(), 0) + 1; j++) {
-                //check if it should be placed
-                if (node->piecesConfig[i] > 0) {
-                    newPiecesConfig = node->piecesConfig;
-                    --newPiecesConfig[i];
-                    //create new objects for child node
+            if (node->piecesConfig[i] > 0) {
+                newPiecesConfig = node->piecesConfig;
+                --newPiecesConfig[i];
+                //create new objects for child node
+                for(int j = node->startPosit; j < node->board->getSquareAmount() - leftPieces + 1; j++) {
+                    //check if it should be placed
+                        //try and if it's not possible to place a new piece on board
                     auto nPiece = newPiece(i);
                     auto newBoard = *node->board;
-                    //try and if it's not possible to place a new piece on board
                     if (!newBoard.setNewPiece(nPiece, j)) {
                         delete nPiece;
-                        delete node;
                         continue;
                     }
                     int newStartPosit = j;

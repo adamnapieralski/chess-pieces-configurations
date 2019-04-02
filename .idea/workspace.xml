@@ -11,16 +11,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ed33bcba-7d13-42a1-99e6-08436bf90cc3" name="Default Changelist" comment="Displaying board after declaring it's dimensions and adding comments">
+    <list default="true" id="ed33bcba-7d13-42a1-99e6-08436bf90cc3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chess.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/chess.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chess_pieces_configurations.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/chess_pieces_configurations.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/proi_project_2.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/proi_project_2.dir/DependInfo.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/proi_project_2.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/proi_project_2.dir/build.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/proi_project_2.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/proi_project_2.dir/cmake_clean.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/proi_project_2.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/proi_project_2.dir/link.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/proi_project_2.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/proi_project_2.cbp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shell.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/shell.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -55,20 +48,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chess_pieces_configurations.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="1" selection-end-line="18" selection-end-column="1" />
-              <folding>
-                <element signature="e#111#130#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="150">
+              <caret line="13" column="24" lean-forward="true" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/chess.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="512">
-              <caret line="88" column="32" selection-start-line="88" selection-start-column="27" selection-end-line="88" selection-end-column="32" />
+            <state relative-caret-position="45">
+              <caret line="96" column="30" selection-start-line="96" selection-start-column="30" selection-end-line="96" selection-end-column="30" />
               <folding>
                 <element signature="e#183#202#0" expanded="true" />
               </folding>
@@ -79,10 +69,18 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chess.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1755">
-              <caret line="122" selection-start-line="122" selection-end-line="122" />
+            <state relative-caret-position="225">
+              <caret line="288" column="51" selection-start-line="288" selection-start-column="51" selection-end-line="288" selection-end-column="51" />
               <folding>
                 <element signature="e#361#514#0" />
+                <element signature="e#670#1077#0" />
+                <element signature="e#1615#1838#0" />
+                <element signature="e#1906#2212#0" />
+                <element signature="e#6225#6277#0" />
+                <element signature="e#5374#6148#0" />
+                <element signature="e#6154#6432#0" />
+                <element signature="e#6438#6781#0" />
+                <element signature="e#6787#6863#0" />
               </folding>
             </state>
           </provider>
@@ -92,7 +90,7 @@
         <entry file="file://$PROJECT_DIR$/shell.h">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="45">
-              <caret line="3" column="27" lean-forward="true" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
+              <caret line="3" column="27" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
               <folding>
                 <element signature="e#201#220#0" expanded="true" />
               </folding>
@@ -100,11 +98,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/shell.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="122">
-              <caret line="125" column="27" lean-forward="true" selection-start-line="125" selection-start-column="27" selection-end-line="125" selection-end-column="27" />
+            <state relative-caret-position="-281">
+              <caret line="117" column="53" lean-forward="true" selection-start-line="117" selection-start-column="53" selection-end-line="117" selection-end-column="53" />
             </state>
           </provider>
         </entry>
@@ -131,10 +129,10 @@
         <option value="$PROJECT_DIR$/cos.cpp" />
         <option value="$PROJECT_DIR$/proi-2.cpp" />
         <option value="$PROJECT_DIR$/shell.h" />
-        <option value="$PROJECT_DIR$/chess.h" />
         <option value="$PROJECT_DIR$/chess_pieces_configurations.cpp" />
-        <option value="$PROJECT_DIR$/shell.cpp" />
+        <option value="$PROJECT_DIR$/chess.h" />
         <option value="$PROJECT_DIR$/chess.cpp" />
+        <option value="$PROJECT_DIR$/shell.cpp" />
       </list>
     </option>
   </component>
@@ -205,7 +203,7 @@
       <updated>1553510726483</updated>
       <workItem from="1553510728790" duration="14848000" />
       <workItem from="1553630320722" duration="95773000" />
-      <workItem from="1554141118894" duration="3605000" />
+      <workItem from="1554141118894" duration="14765000" />
     </task>
     <task id="LOCAL-00001" summary="Added custom library files for chess classes">
       <created>1553511908796</created>
@@ -389,28 +387,42 @@
       <option name="project" value="LOCAL" />
       <updated>1554110767182</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="v0.2">
+      <created>1554206772060</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1554206772060</updated>
+    </task>
+    <task id="LOCAL-00028" summary="added Board getSquaresAmount fun, first changes in traverse algorithm to start with different posits">
+      <created>1554231566094</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1554231566094</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="114226000" />
+    <option name="totallyTimeSpent" value="125386000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1366" height="743" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6" visible="true" weight="0.22809668" />
-      <window_info id="Structure" order="1" sideWeight="0.4" side_tool="true" visible="true" weight="0.22809668" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.60087717" visible="true" weight="0.22809668" />
+      <window_info id="Structure" order="1" sideWeight="0.3991228" side_tool="true" visible="true" weight="0.22809668" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32903227" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.36290324" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.61774194" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.26451612" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.45322582" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
-      <window_info anchor="bottom" id="Messages" order="8" weight="0.43225807" />
+      <window_info anchor="bottom" id="Messages" order="8" weight="0.42903227" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32903227" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.47580644" />
@@ -488,15 +500,22 @@
     <MESSAGE value="Corrected traversing function with proper deletes" />
     <MESSAGE value="Interface welcome message and solved repeating Incorrect data input" />
     <MESSAGE value="Displaying board after declaring it's dimensions and adding comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="Displaying board after declaring it's dimensions and adding comments" />
+    <MESSAGE value="v0.2" />
+    <MESSAGE value="added Board getSquaresAmount fun, first changes in traverse algorithm to start with different posits" />
+    <option name="LAST_COMMIT_MESSAGE" value="added Board getSquaresAmount fun, first changes in traverse algorithm to start with different posits" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/chess.cpp</url>
-          <line>238</line>
-          <option name="timeStamp" value="58" />
+          <line>170</line>
+          <option name="timeStamp" value="63" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/chess.cpp</url>
+          <line>291</line>
+          <option name="timeStamp" value="66" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -526,13 +545,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/include/c++/7/bits/stl_vector.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="563" selection-start-line="563" selection-end-line="563" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/include/c++/7/ext/new_allocator.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
@@ -557,32 +569,34 @@
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/chess_pieces_configurations.cpp">
+    <entry file="file:///usr/include/c++/7/bits/stl_vector.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="1" selection-end-line="18" selection-end-column="1" />
-          <folding>
-            <element signature="e#111#130#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="119">
+          <caret line="798" selection-start-line="798" selection-end-line="798" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chess.h">
+    <entry file="file:///usr/include/c++/7/bits/stl_iterator.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="512">
-          <caret line="88" column="32" selection-start-line="88" selection-start-column="27" selection-end-line="88" selection-end-column="32" />
-          <folding>
-            <element signature="e#183#202#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="284">
+          <caret line="792" selection-start-line="792" selection-end-line="792" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/chess.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1755">
-          <caret line="122" selection-start-line="122" selection-end-line="122" />
+        <state relative-caret-position="225">
+          <caret line="288" column="51" selection-start-line="288" selection-start-column="51" selection-end-line="288" selection-end-column="51" />
           <folding>
             <element signature="e#361#514#0" />
+            <element signature="e#670#1077#0" />
+            <element signature="e#1615#1838#0" />
+            <element signature="e#1906#2212#0" />
+            <element signature="e#6225#6277#0" />
+            <element signature="e#5374#6148#0" />
+            <element signature="e#6154#6432#0" />
+            <element signature="e#6438#6781#0" />
+            <element signature="e#6787#6863#0" />
           </folding>
         </state>
       </provider>
@@ -590,7 +604,7 @@
     <entry file="file://$PROJECT_DIR$/shell.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
-          <caret line="3" column="27" lean-forward="true" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
+          <caret line="3" column="27" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
           <folding>
             <element signature="e#201#220#0" expanded="true" />
           </folding>
@@ -599,8 +613,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/shell.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="125" column="27" lean-forward="true" selection-start-line="125" selection-start-column="27" selection-end-line="125" selection-end-column="27" />
+        <state relative-caret-position="-281">
+          <caret line="117" column="53" lean-forward="true" selection-start-line="117" selection-start-column="53" selection-end-line="117" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chess_pieces_configurations.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="13" column="24" lean-forward="true" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chess.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="96" column="30" selection-start-line="96" selection-start-column="30" selection-end-line="96" selection-end-column="30" />
+          <folding>
+            <element signature="e#183#202#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
