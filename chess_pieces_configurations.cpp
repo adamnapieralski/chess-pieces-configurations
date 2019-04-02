@@ -1,5 +1,5 @@
 /*
- * Name: proi_2.cpp
+ * Name: chess_pieces_configurations.cpp
  * Purpose: PROI 2. project
  * @author Adam Napieralski
  * @version 0.1 25/03/2019

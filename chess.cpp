@@ -120,6 +120,7 @@ namespace chess{
     char Queen::getSymbol() const {
         return 'Q';
     }
+
     bool King::isCaptured(Position square) {
         int deltaCol = square.x - this->position.x;
         int deltaRow = square.y - this->position.y;

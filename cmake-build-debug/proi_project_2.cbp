@@ -90,7 +90,7 @@
 		<Unit filename="/home/napiad/studia/eiti/proi/proi-project-2/chess.h">
 			<Option target="proi_project_2"/>
 		</Unit>
-		<Unit filename="/home/napiad/studia/eiti/proi/proi-project-2/main.cpp">
+		<Unit filename="/home/napiad/studia/eiti/proi/proi-project-2/chess_pieces_configurations.cpp">
 			<Option target="proi_project_2"/>
 		</Unit>
 		<Unit filename="/home/napiad/studia/eiti/proi/proi-project-2/shell.cpp">

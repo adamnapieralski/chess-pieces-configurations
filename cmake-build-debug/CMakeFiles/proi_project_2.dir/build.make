@@ -57,18 +57,18 @@ include CMakeFiles/proi_project_2.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/proi_project_2.dir/flags.make
 
-CMakeFiles/proi_project_2.dir/main.cpp.o: CMakeFiles/proi_project_2.dir/flags.make
-CMakeFiles/proi_project_2.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/napiad/studia/eiti/proi/proi-project-2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/proi_project_2.dir/main.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/proi_project_2.dir/main.cpp.o -c /home/napiad/studia/eiti/proi/proi-project-2/main.cpp
+CMakeFiles/proi_project_2.dir/chess_pieces_configurations.cpp.o: CMakeFiles/proi_project_2.dir/flags.make
+CMakeFiles/proi_project_2.dir/chess_pieces_configurations.cpp.o: ../chess_pieces_configurations.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/napiad/studia/eiti/proi/proi-project-2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/proi_project_2.dir/chess_pieces_configurations.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/proi_project_2.dir/chess_pieces_configurations.cpp.o -c /home/napiad/studia/eiti/proi/proi-project-2/chess_pieces_configurations.cpp
 
-CMakeFiles/proi_project_2.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/proi_project_2.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/napiad/studia/eiti/proi/proi-project-2/main.cpp > CMakeFiles/proi_project_2.dir/main.cpp.i
+CMakeFiles/proi_project_2.dir/chess_pieces_configurations.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/proi_project_2.dir/chess_pieces_configurations.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/napiad/studia/eiti/proi/proi-project-2/chess_pieces_configurations.cpp > CMakeFiles/proi_project_2.dir/chess_pieces_configurations.cpp.i
 
-CMakeFiles/proi_project_2.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/proi_project_2.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/napiad/studia/eiti/proi/proi-project-2/main.cpp -o CMakeFiles/proi_project_2.dir/main.cpp.s
+CMakeFiles/proi_project_2.dir/chess_pieces_configurations.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/proi_project_2.dir/chess_pieces_configurations.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/napiad/studia/eiti/proi/proi-project-2/chess_pieces_configurations.cpp -o CMakeFiles/proi_project_2.dir/chess_pieces_configurations.cpp.s
 
 CMakeFiles/proi_project_2.dir/chess.cpp.o: CMakeFiles/proi_project_2.dir/flags.make
 CMakeFiles/proi_project_2.dir/chess.cpp.o: ../chess.cpp
@@ -98,14 +98,14 @@ CMakeFiles/proi_project_2.dir/shell.cpp.s: cmake_force
 
 # Object files for target proi_project_2
 proi_project_2_OBJECTS = \
-"CMakeFiles/proi_project_2.dir/main.cpp.o" \
+"CMakeFiles/proi_project_2.dir/chess_pieces_configurations.cpp.o" \
 "CMakeFiles/proi_project_2.dir/chess.cpp.o" \
 "CMakeFiles/proi_project_2.dir/shell.cpp.o"
 
 # External object files for target proi_project_2
 proi_project_2_EXTERNAL_OBJECTS =
 
-proi_project_2: CMakeFiles/proi_project_2.dir/main.cpp.o
+proi_project_2: CMakeFiles/proi_project_2.dir/chess_pieces_configurations.cpp.o
 proi_project_2: CMakeFiles/proi_project_2.dir/chess.cpp.o
 proi_project_2: CMakeFiles/proi_project_2.dir/shell.cpp.o
 proi_project_2: CMakeFiles/proi_project_2.dir/build.make

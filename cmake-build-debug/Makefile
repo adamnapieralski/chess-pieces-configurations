@@ -150,32 +150,32 @@ chess.cpp.s:
 	$(MAKE) -f CMakeFiles/proi_project_2.dir/build.make CMakeFiles/proi_project_2.dir/chess.cpp.s
 .PHONY : chess.cpp.s
 
-main.o: main.cpp.o
+chess_pieces_configurations.o: chess_pieces_configurations.cpp.o
 
-.PHONY : main.o
+.PHONY : chess_pieces_configurations.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) -f CMakeFiles/proi_project_2.dir/build.make CMakeFiles/proi_project_2.dir/main.cpp.o
-.PHONY : main.cpp.o
+chess_pieces_configurations.cpp.o:
+	$(MAKE) -f CMakeFiles/proi_project_2.dir/build.make CMakeFiles/proi_project_2.dir/chess_pieces_configurations.cpp.o
+.PHONY : chess_pieces_configurations.cpp.o
 
-main.i: main.cpp.i
+chess_pieces_configurations.i: chess_pieces_configurations.cpp.i
 
-.PHONY : main.i
+.PHONY : chess_pieces_configurations.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles/proi_project_2.dir/build.make CMakeFiles/proi_project_2.dir/main.cpp.i
-.PHONY : main.cpp.i
+chess_pieces_configurations.cpp.i:
+	$(MAKE) -f CMakeFiles/proi_project_2.dir/build.make CMakeFiles/proi_project_2.dir/chess_pieces_configurations.cpp.i
+.PHONY : chess_pieces_configurations.cpp.i
 
-main.s: main.cpp.s
+chess_pieces_configurations.s: chess_pieces_configurations.cpp.s
 
-.PHONY : main.s
+.PHONY : chess_pieces_configurations.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles/proi_project_2.dir/build.make CMakeFiles/proi_project_2.dir/main.cpp.s
-.PHONY : main.cpp.s
+chess_pieces_configurations.cpp.s:
+	$(MAKE) -f CMakeFiles/proi_project_2.dir/build.make CMakeFiles/proi_project_2.dir/chess_pieces_configurations.cpp.s
+.PHONY : chess_pieces_configurations.cpp.s
 
 shell.o: shell.cpp.o
 
@@ -216,9 +216,9 @@ help:
 	@echo "... chess.o"
 	@echo "... chess.i"
 	@echo "... chess.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... chess_pieces_configurations.o"
+	@echo "... chess_pieces_configurations.i"
+	@echo "... chess_pieces_configurations.s"
 	@echo "... shell.o"
 	@echo "... shell.i"
 	@echo "... shell.s"

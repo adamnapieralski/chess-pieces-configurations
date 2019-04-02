@@ -152,7 +152,6 @@ namespace shell{
             default:
                 std::cout << "Niepoprawne polecenie. Sprobuj ponownie.\n\n";
                 return true;
-
         }
     }
 }

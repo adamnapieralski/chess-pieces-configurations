@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/proi_project_2.dir/main.cpp.o"
+  "CMakeFiles/proi_project_2.dir/chess_pieces_configurations.cpp.o"
   "CMakeFiles/proi_project_2.dir/chess.cpp.o"
   "CMakeFiles/proi_project_2.dir/shell.cpp.o"
   "proi_project_2.pdb"
