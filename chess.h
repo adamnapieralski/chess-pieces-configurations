@@ -2,7 +2,7 @@
  * Name: chess.h
  * Purpose: Custom library .h file for chess pieces and board classes
  * @author Adam Napieralski
- * @version 0.2 29/03/2019
+ * @version 0.3 2/04/2019
  */
 
 #ifndef CHESS_H
@@ -27,7 +27,6 @@ namespace chess{
         Position(int x1, int y1);
 
         friend bool operator==(Position p1, Position p2);
-        // Position(Position &posit);
     };
 
     class Piece{
@@ -36,7 +35,6 @@ namespace chess{
 
         Piece();
         Piece(Piece &piece);
-        // virtual void setCaptureSquares() = 0;
         virtual bool isCaptured(Position square) = 0;
         virtual char getSymbol() const = 0;
 
@@ -46,10 +44,9 @@ namespace chess{
     class Pawn: public Piece{
     public:
         Pawn();
-        // Pawn(Position positP);
+
         bool isCaptured(Position square) override;
         char getSymbol() const override;
-        // void setCaptureSquares() override;
     };
 
     class Rook: public Piece{
@@ -93,7 +90,7 @@ namespace chess{
         Board(int dimX, int dimY);
         Board(Board &board);
 
-        bool setNewPiece(Piece *piece, int startPosit);
+        bool setNewPiece(Piece *piece, int positIndex);
         int getSquareAmount();
         friend std::ostream& operator<<(std::ostream& os, const chess::Board& board);
         Board& operator=(const Board& newBoard);

@@ -2,7 +2,7 @@
  * Name: chess.cpp
  * Purpose: Custom library .cpp file for chess pieces and board classes
  * @author Adam Napieralski
- * @version 0.1 29/03/2019
+ * @version 0.3 2/04/2019
  */
 
 #include "chess.h"
@@ -189,20 +189,16 @@ namespace chess{
 //        return false;
 //    }
 
-    bool Board::setNewPiece(chess::Piece *piece, int startPosit) {
-        piece->position = this->positions[startPosit];
+    bool Board::setNewPiece(chess::Piece *piece, int positIndex) {
+        //set passed piece's position to the one corresponding to positIndex on board
+        piece->position = this->positions[positIndex];
         int temp = 0;
+        //iterate through already placed pieces on board
         for(auto pieceIt = this->pieces.begin(); pieceIt != this->pieces.end(); pieceIt++){
             //if they capture each other or are on the same squares
-            auto itPosit = (*pieceIt)->position;
-            if((*pieceIt)->isCaptured(piece->position))
-                break;
-            if(itPosit == piece->position)
-                break;
-            if(piece->isCaptured(itPosit)){ //|| (*pieceIt)->isCaptured(piece->position) || (*pieceIt)->position == piece->position){
+            if(piece->isCaptured((*pieceIt)->position) || (*pieceIt)->isCaptured(piece->position) || (*pieceIt)->position == piece->position){
                 break;
             }
-
             ++temp;
         }
         //if piece doesn't capture each other with any of already set pieces
@@ -214,17 +210,23 @@ namespace chess{
         return false;
     }
 
+    //return amount of squares in board
     int Board::getSquareAmount() {
         return this->dimX * this->dimY;
     }
 
     std::ostream& operator<<(std::ostream& os, const chess::Board& board) {
+        //iterate through rows
         for(int i = 0; i < board.dimY; i++){
+            //iterate through columns
             for(int j = 0; j < board.dimX; j++){
                 Position *pTemp = new Position(j, i);
                 bool isPiece = false;
+                //iterate through pieces on board
                 for(auto pieceIt = board.pieces.begin(); pieceIt != board.pieces.end(); pieceIt++){
+                    //if a piece is placed on a certain position
                     if(*pTemp == (*pieceIt)->position){
+                        //print its symbol
                         os << (*pieceIt)->getSymbol() << " ";
                         isPiece = true;
                         break;
@@ -266,8 +268,7 @@ namespace chess{
     }
 
     void noCaptureTraverse(Node* node, bool &foundConfig, bool printAll){
-        //create array zero config values to compare
-        std::array<int, 6> zeroConfig = {0, };
+        //number of pieces still to be placed on board
         int leftPieces = std::accumulate(node->piecesConfig.begin(), node->piecesConfig.end(), 0);
         //if all pieces were already placed
         if(leftPieces == 0){
@@ -275,27 +276,34 @@ namespace chess{
             if(!printAll){
                 std::cout << "Przykladowa konfiguracja ustawien figur:\n";
             }
+            //print board
             std::cout << *node->board << std::endl;
             foundConfig = true;
             delete node;
+            //move back to parent node
             return;
         }
         std::array<int, PIECES_TYPES> newPiecesConfig = {0, };
         //for every piece type
         for(int i = 0; i < PIECES_TYPES; ++i){
+            //check if certain piece is still to be placed
             if (node->piecesConfig[i] > 0) {
+                //new config array after placing the piece
                 newPiecesConfig = node->piecesConfig;
                 --newPiecesConfig[i];
-                //create new objects for child node
+                //start placing a piece in every square starting from the startPosit (position after lastly placed piece)
                 for(int j = node->startPosit; j < node->board->getSquareAmount() - leftPieces + 1; j++) {
-                    //check if it should be placed
-                        //try and if it's not possible to place a new piece on board
+                    //create piece and board objects for a child node
                     auto nPiece = newPiece(i);
                     auto newBoard = *node->board;
+                    //check if this piece can be placed in certain position
                     if (!newBoard.setNewPiece(nPiece, j)) {
+                        //if not delete created piece and move on to the next position in for loop
                         delete nPiece;
+                        //try next position in for loop
                         continue;
                     }
+                    //after placing the position prepare newStartPosit for the next piece (one posit after this one)
                     int newStartPosit = j;
                     ++newStartPosit;
                     //create new node
@@ -304,7 +312,7 @@ namespace chess{
                     node->piecesNodes[i] = newNode;
                     //execute the same algorithm for child node
                     noCaptureTraverse(node->piecesNodes[i], foundConfig, printAll);
-                    //if for children nodes solution wasnt found and we dont want to check any more
+                    //if for children nodes solution was found and we dont want to check and print any more
                     if (!printAll && foundConfig) {
                         delete node;
                         return;
@@ -312,10 +320,8 @@ namespace chess{
                 }
             }
         }
-        //if we wanted to print all after checking all children nodes
-        if(printAll){
-            delete node;
-        }
+        //delete whole node after finishing work on all of its children
+        delete node;
     }
 }
 

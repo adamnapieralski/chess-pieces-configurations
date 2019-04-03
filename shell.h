@@ -2,10 +2,10 @@
  * Name: shell.h
  * Purpose: Custom library header file with class for chess pieces and board classes
  * @author Adam Napieralski
- * @version 0.2 29/03/2019
+ * @version 0.3 2/04/2019
  */
-//#ifndef SHELL_H
-//#define SHELL_H
+#ifndef SHELL_H
+#define SHELL_H
 
 #include <iostream>
 #include <array>
@@ -19,6 +19,7 @@ namespace shell{
         std::array<int, PIECES_TYPES> piecesConfig;
         std::array<std::string, PIECES_TYPES> piecesNames = {"Pionek", "Wieza", "Goniec", "Kon", "Hetman", "Krol"};
         bool printAll;
+
         Shell();
         ~Shell();
         void setInputBoard();
@@ -34,4 +35,4 @@ namespace shell{
     };
 }
 
-//#endif //SHELL_H
+#endif //SHELL_H

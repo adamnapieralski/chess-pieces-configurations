@@ -2,7 +2,7 @@
  * Name: shell.cpp
  * Purpose: Custom library .cpp file with class for chess pieces and board classes
  * @author Adam Napieralski
- * @version 0.2 29/03/2019
+ * @version 0.3 2/04/2019
  */
 
 #include "shell.h"
