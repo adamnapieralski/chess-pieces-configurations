@@ -8,21 +8,24 @@
 #include "chess.h"
 
 namespace chess{
+	//class storing position on board with x y coordinates
     Position::Position() {
         this->x = 0;
         this->y = 0;
     }
+	//constructor with coordinates
     Position::Position(int x1, int y1) {
         this->x = x1;
         this->y = y1;
     }
+	//overriding == operator for positions
     bool operator==(Position p1, Position p2){
         if(p1.x == p2.x && p1.y == p2.y)
             return true;
         else
             return false;
     }
-
+	//default constructor for a piece 
     Piece::Piece() {
         this->position.x = 0;
         this->position.y = 0;
@@ -96,7 +99,7 @@ namespace chess{
     bool Knight::isCaptured(Position square) {
         int deltaCol = square.x - this->position.x;
         int deltaRow = square.y - this->position.y;
-
+		
         if((abs(deltaCol) == 1 && abs(deltaRow) == 2) || (abs(deltaCol) == 2 && abs(deltaRow) == 1))
             return true;
         else
@@ -164,30 +167,6 @@ namespace chess{
         this->positions = board.positions;
         this->pieces = board.pieces;
     }
-
-//    bool Board::setNewPiece(Piece *piece, int startPosit) {
-//        //iterate through all chessboard square positions
-//        for(auto positIt = this->positions.begin() + startPosit; positIt != this->positions.end(); positIt++){
-//            //try setting piece in square
-//            piece->position = *positIt;
-//            //iterate through already set pieces on chessboard and count with how many of them piece doesn't capture each other
-//            int temp = 0;
-//            for(auto pieceIt = this->pieces.begin(); pieceIt != this->pieces.end(); pieceIt++){
-//                //if they capture each other or are on the same squares
-//                if(piece->isCaptured((*pieceIt)->position) || (*pieceIt)->isCaptured(piece->position) || (*pieceIt)->position == piece->position){
-//                    break;
-//                }
-//                temp++;
-//            }
-//            //if piece doesn't capture each other with any of already set pieces
-//            if(temp == this->pieces.size()){
-//                this->pieces.push_back(piece);
-//                return true;
-//            }
-//        }
-//        //no place to put new piece
-//        return false;
-//    }
 
     bool Board::setNewPiece(chess::Piece *piece, int positIndex) {
         //set passed piece's position to the one corresponding to positIndex on board
@@ -324,4 +303,3 @@ namespace chess{
         delete node;
     }
 }
-

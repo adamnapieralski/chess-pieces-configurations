@@ -10,24 +10,28 @@
 using namespace chess;
 
 namespace shell{
-
+	
+	//shell default contructor
     Shell::Shell(){
         this->piecesConfig = {0, };
         this->printAll = false;
         this->inputBoard = new Board();
     }
-
+	
+	//shell constructor for arguments input form terminal
     Shell::Shell(std::array<int, ARG_NUM> inputData){
         auto shellBoard = new Board(inputData[0], inputData[1]);
         this->inputBoard = shellBoard;
         this->piecesConfig = {inputData[2], inputData[3], inputData[4], inputData[5], inputData[6], inputData[7]};
         this->printAll = false;
     }
-
+	
+	//shell destructor
     Shell::~Shell() {
         delete this->inputBoard;
     }
-
+	
+	//setting board that the shell will work on
     void Shell::setInputBoard() {
         std::cout << "Podaj wymiary szachownicy (w ilosci pol):" << std::endl;
         int dimX=-1, dimY=-1;
@@ -48,7 +52,8 @@ namespace shell{
         this->inputBoard = inBoard;
         std::cout << *this->inputBoard << '\n';
     }
-
+	
+	//setting pieces configuration to be place that the shell will be working on
     void Shell::setPiecesConfig() {
         std::cout << "Podaj ilosc figur" << std::endl;
         for(int i = 0; i < PIECES_TYPES; ++i){
@@ -60,7 +65,8 @@ namespace shell{
             }
         }
     }
-
+	
+	//setting way of displaying found configurations
     void Shell::setPrintAll() {
         std::cout << "Wyswietlac wszystkie znalezione konfiguracje?" << std::endl;
         std::cout << "\t0 - Nie, wyswietl tylko jedna przykladowa\n\t1 - Tak, wyswietl wszystkie znalezione" << std::endl;
@@ -73,7 +79,8 @@ namespace shell{
         }
         this->printAll = temp;
     }
-
+	
+	//obtaining user's choice in menu
     int Shell::getChoice(){
         int choice;
         while (!(std::cin >> choice) || std::cin.peek() != '\n')
@@ -90,6 +97,7 @@ namespace shell{
         std::cout << "Program pozwala zbadac mozliwosc ustawienia dowolnego zbioru figur szachowych ";
         std::cout << "na szachownicy o dowolnej wielkosci tak, aby zadna z figur nie \"bila\" innej.\n\n";
     }
+	
     void Shell::displayMainMenu() {
         std::cout << "\nMENU\n\n";
         std::cout << "\t0 - realizuj algorytm\n";
@@ -121,8 +129,13 @@ namespace shell{
         std::cout << "\tQ - Queen - Hetman\n";
         std::cout << "\tK - King - Krol\n" << std::endl;
     }
-
+	
+	//function executing search algorithm on set board and pieces configuration
     void Shell::chessConfigSearch(){
+		if(this->inputBoard->dimX == 0 && this->inputBoard->dimY == 0){
+			std::cout << "Brak poprawnie zdefiniowanej szachownicy\n";
+			return;
+		}
         auto rootNode = new Node(nullptr, this->inputBoard, this->piecesConfig, 0);
         bool foundConfig = false;
         noCaptureTraverse(rootNode, foundConfig, this->printAll);
