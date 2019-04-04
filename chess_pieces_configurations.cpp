@@ -10,7 +10,34 @@
 #include "chess.h"
 #include "shell.h"
 
-int main() {
+int main(int argc, char *argv[]) {
+
+    const int argN = 8;
+    std::array<int, argN> inputData = {0, };
+    int i = 0;
+    if(argc == argN + 1){
+        for(i = 0; i < argN; i++){
+            try {
+                inputData[i] = std::stoi(argv[i+1]);
+                if((i == 0 || i == 1) && inputData[i] < 1){
+                    throw std::invalid_argument("Out of range");
+                }
+            }
+            catch(std::invalid_argument){
+                std::cout << "Niepoprawne dane wejsciowe\n\n";
+                break;
+            }
+
+        }
+    }
+    else if(argc > 1){
+        std::cout << "Niepoprawne dane wejsciowe\n\n";
+    }
+    if(i == argN){
+        shell::Shell shell(inputData);
+        shell.chessConfigSearch();
+    }
+
     //create shell object to handle user commands
     shell:: Shell shell;
     shell.displayWelcomeScreen();

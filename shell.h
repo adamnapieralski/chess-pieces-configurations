@@ -7,6 +7,7 @@
 #ifndef SHELL_H
 #define SHELL_H
 
+#define ARG_NUM 8
 #include <iostream>
 #include <array>
 #include <vector>
@@ -21,7 +22,9 @@ namespace shell{
         bool printAll;
 
         Shell();
+        Shell(std::array<int, ARG_NUM> inputData);
         ~Shell();
+
         void setInputBoard();
         void setPiecesConfig();
         void setPrintAll();
@@ -29,7 +32,7 @@ namespace shell{
         void displayMainMenu();
         void displaySettings();
         void displayDescription();
-        void chessConfigSearch(chess::Node* rootNode);
+        void chessConfigSearch();
         bool exeMenu();
         int getChoice();
     };

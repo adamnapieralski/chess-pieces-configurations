@@ -17,6 +17,13 @@ namespace shell{
         this->inputBoard = new Board();
     }
 
+    Shell::Shell(std::array<int, ARG_NUM> inputData){
+        auto shellBoard = new Board(inputData[0], inputData[1]);
+        this->inputBoard = shellBoard;
+        this->piecesConfig = {inputData[2], inputData[3], inputData[4], inputData[5], inputData[6], inputData[7]};
+        this->printAll = false;
+    }
+
     Shell::~Shell() {
         delete this->inputBoard;
     }
@@ -115,7 +122,8 @@ namespace shell{
         std::cout << "\tK - King - Krol\n" << std::endl;
     }
 
-    void Shell::chessConfigSearch(chess::Node* rootNode){
+    void Shell::chessConfigSearch(){
+        auto rootNode = new Node(nullptr, this->inputBoard, this->piecesConfig, 0);
         bool foundConfig = false;
         noCaptureTraverse(rootNode, foundConfig, this->printAll);
         if(!foundConfig){
@@ -127,8 +135,7 @@ namespace shell{
         this->displayMainMenu();
         switch(this->getChoice()){
             case 0:{
-                auto rootNode = new Node(nullptr, this->inputBoard, this->piecesConfig, 0);
-                chessConfigSearch(rootNode);
+                chessConfigSearch();
                 return true;
             }
             case 1:
